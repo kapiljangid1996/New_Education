@@ -32,27 +32,27 @@ class SearchController extends Controller
 
     public function search(Request $request)
     {
-    	if(!empty($request->get('query'))){
-    		$query = $request->get('query');
-    		$result = $request->get('type');
-    		if ($result == 'college') {
-    			$data = College::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->orWhere('city', 'like', '%'.$query.'%')->orWhere('state', 'like', '%'.$query.'%')->get();
-	    		$output = '<ul class="dropdown-menu edutab" style="display:block;">';
-	    		foreach($data as $row){    			
-	    			$output .= '<li><a class="search-list" href="/college/'.$row->slug.'">'.$row->name.'</a></li>';
-	    		}    		
-    			$output .= '</ul>';
-    		}
+        if(!empty($request->get('query'))){
+            $query = $request->get('query');
+            $result = $request->get('type');
+            if ($result == 'college') {
+                $data = College::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->orWhere('city', 'like', '%'.$query.'%')->orWhere('state', 'like', '%'.$query.'%')->get();
+                $output = '<ul class="dropdown-menu edutab" style="display:block;">';
+                foreach($data as $row){             
+                    $output .= '<li><a class="search-list" href="/college/'.$row->slug.'">'.$row->name.'</a></li>';
+                }           
+                $output .= '</ul>';
+            }
             elseif ($result == 'course') {
-    			$data = Course::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->get();    		
-	    		$output = '<ul class="dropdown-menu edutab" style="display:block;">';
-	    		foreach($data as $row){    			
-	    			$output .= '<li><a class="search-list" href="/course/'.$row->slug.'">'.$row->name.'</a></li>';
-	    		}    		
-    			$output .= '</ul>';
-    		}
-    		echo $output;
-    	}
+                $data = Course::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->get();            
+                $output = '<ul class="dropdown-menu edutab" style="display:block;">';
+                foreach($data as $row){             
+                    $output .= '<li><a class="search-list" href="/course/'.$row->slug.'">'.$row->name.'</a></li>';
+                }           
+                $output .= '</ul>';
+            }
+            echo $output;
+        }
     }
     /*------------------------------------------------------------------ Colleges Filter Page Start --------------------------------------------------------------*/
 
@@ -67,14 +67,14 @@ class SearchController extends Controller
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::where('id',$id)->paginate(10)->appends($form_data);  /* Get College Name */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);  /* Get College Name */
         }
 
         elseif (!empty($form_data['ownership']) && !empty($form_data['college_name'])) {
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::where('id',$id)->paginate(10)->appends($form_data);   /* Get College Name */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);   /* Get College Name */
         }
 
         elseif (!empty($form_data['ownership']) && !empty($form_data['rating'])) {
@@ -92,18 +92,18 @@ class SearchController extends Controller
 
             $id = $college_id1->union($college_id2);    /* Merge colleges ids from ownership and ratings instances */
 
-            $colleges = College::whereIn('id',$id)->paginate(10)->appends($form_data);   /* Get all the colleges Merge colleges ids */
+            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$id)->paginate(10)->appends($form_data);   /* Get all the colleges Merge colleges ids */
         }
 
         elseif (!empty($form_data['college_name']) && !empty($form_data['rating'])) {
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::where('id',$id)->paginate(10);   /* Get all the colleges Merge colleges ids */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);   /* Get all the colleges Merge colleges ids */
         }
 
         elseif (!empty($form_data['ownership'])) {
-            $colleges = College::whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10)->appends($form_data);
+            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10)->appends($form_data);
         }
 
         elseif (!empty($form_data['rating'])) {
@@ -114,24 +114,24 @@ class SearchController extends Controller
                     $data[] = $rate;
                 }                         
             }
-            $colleges = College::whereIn('id',$data)->paginate(10)->appends($form_data);
+            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$data)->paginate(10)->appends($form_data);
         }
 
         elseif (!empty($form_data['college_name'])) {
-            $colleges = College::where('id',$form_data['college_name'])->paginate(10)->appends($form_data);;
+            $colleges = College::with('state_name')->with('city_name')->where('id',$form_data['college_name'])->paginate(10)->appends($form_data);;
         }
 
         else{
-            $colleges = College::where('status','=',1)->orderBy('id', 'desc')->paginate(10); 
+            $colleges = College::with('state_name')->with('city_name')->where('status','=',1)->orderBy('id', 'desc')->paginate(10); 
         }
 
         return view('front.collegefilter')->with('colleges',$colleges); 
     }
 
-    /*------------------------------------------------------------------ Colleges Filter Page End --------------------------------------------------------------------------------*/
+    /*------------------------------------------------------------------ Colleges Filter Page End ------------------------------------------------------------------*/
 
 
-    /*------------------------------------------------------------------ Courses Filter Page Start --------------------------------------------------------------------------------*/
+    /*------------------------------------------------------------------ Courses Filter Page Start -----------------------------------------------------------------*/
 
     public function filterCourseResult(Request $request)
     {
@@ -166,7 +166,7 @@ class SearchController extends Controller
         return view('front.coursefilter')->with('courses',$courses);              
     }
 
-    /*------------------------------------------------------------------ Courses Filter Page End --------------------------------------------------------------------------------*/
+    /*------------------------------------------------------------------ Courses Filter Page End ----------------------------------------------------------------*/
 
     public function autocompleteCourse(Request $request){
 

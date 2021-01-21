@@ -104,7 +104,9 @@
 								<li><a href="#" class="active">{!! $colleges->currentPage() !!}</a></li>
 								<li>of</li>
 								<li><a href="#">{!! $colleges->lastPage() !!}</a></li>
-								<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
+								@if($colleges->nextPageUrl() != null)
+									<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
+								@endif
 							</ul>
 						</div>
 						<div class="product-view-system pull-right" role="tablist">
@@ -162,7 +164,7 @@
 													</div>
 												</div>
 												<div class="course-meta">
-													<p>{{$college->city}}, {{$college->state}}</p>
+													<p>{{$college->city_name->name}}, {{$college->state_name->name}}</p>
 													<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_st)->format('d F, Y')}}</a>
 												</div>
 												<p class="show-read-more">{{ $college->short_description }}</p>
@@ -184,7 +186,9 @@
 								<li><a href="#" class="active">{!! $colleges->currentPage() !!}</a></li>
 								<li>of</li>
 								<li><a href="#">{!! $colleges->lastPage() !!}</a></li>
-								<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
+								@if($colleges->nextPageUrl() != null)
+									<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
+								@endif
 							</ul>
 						</div>
 					</div>
@@ -233,8 +237,11 @@ $(document).ready(function(){
 			e.preventDefault(); 
             $('.loader').css("display", "block");
 			var form_data = $( "#collegefilterform :input" ).serialize();
+
 			$.post(baseUrl+'/colleges?page='+page, {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
 	        {
+	        	var after_url = baseUrl+'/colleges?'+form_data;
+	        	window.history.pushState({}, '', after_url);
 	            $('.collegeView').html(markup);
 	            $('.loader').css("display", "none");
 	        }); 
@@ -249,6 +256,8 @@ $(document).ready(function(){
 		    	var form_data = $( "#collegefilterform :input" ).serialize();
 				$.post(baseUrl+'/colleges?page='+page, {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
 		        {
+		        	var new_url = baseUrl+'/colleges?page='+page;
+	        		window.history.pushState({}, '', new_url);
 		            $('.collegeView').html(markup);
 		            $('.loader').css("display", "none");
 		        });
@@ -264,10 +273,13 @@ $(document).ready(function(){
 			var baseUrl = '{{ URL::to('/') }}';
 			var page = $('.hidden_page').attr('value');			
 			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
 			$('.loader').css("display", "block");
 			var form_data = $( "#collegefilterform" ).serialize();
 			$.post(baseUrl+'/colleges?page='+page, {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
 	        {
+	        	var new_url = baseUrl+'/colleges?page='+form_data;
+	        	window.history.pushState({}, '', new_url);
 	            $('.collegeView').html(markup);
 	            $('.loader').css("display", "none");
 	        }); 

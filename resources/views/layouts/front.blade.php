@@ -225,7 +225,13 @@
 	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-  	<!--------------------------------------------------- Course & Colleges Autocomplete Name Filter Script Start -------------------------------------------------------------- -->
+  	<!--------------------------------------------------- Sign Up Modal Time Script Start ----------------------------------------------- -->
+  	<script>
+  		
+  	</script>
+  	<!--------------------------------------------------- Sign Up Modal Time Script End ----------------------------------------------- -->
+
+  	<!--------------------------------------------------- Course & Colleges Autocomplete Name Filter Script Start ----------------------------------------------- -->
  	<script>
 	$(document).ready(function() {
 
@@ -287,11 +293,14 @@
 		    select: function (event, ui){
 		    	$(this).val(ui.item.label);
 	           	$('#filter_college_name_id').val(ui.item.slug);
-
+	           	$('.loader').css("display", "block");
 	           	var form_data = $( "#collegefilterform :input" ).serialize();
 				$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
 		        {
+		        	var new_url = baseUrl+'/colleges?'+form_data;
+	        		window.history.pushState({}, '', new_url);
 		            $('.collegeView').html(markup);
+		            $('.loader').css("display", "none");
 		        }); 
 		    }
 		});
