@@ -268,21 +268,24 @@ $(document).ready(function(){
 
 <script>
 	$(document).ready(function(){
-		$(window).on('load', function() {
-			var baseUrl = '{{ URL::to('/') }}';
-			var page = $('.hidden_page').attr('value');			
-			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+		var page = $('.hidden_page').attr('value');	
+		if (page > 1) {
+			$(window).on('load', function() {
+				var baseUrl = '{{ URL::to('/') }}';
+						
+				var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
-			$('.loader').css("display", "block");
-			var form_data = $( "#collegefilterform" ).serialize();
-			$.post(baseUrl+'/colleges?page='+page, {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
-	        {
-	        	var new_url = baseUrl+'/colleges?'+form_data;
-	        	window.history.pushState({}, '', new_url);
-	            $('.collegeView').html(markup);
-	            $('.loader').css("display", "none");
-	        }); 
-		});
+				$('.loader').css("display", "block");
+				var form_data = $( "#collegefilterform" ).serialize();
+				$.post(baseUrl+'/colleges?page='+page, {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
+		        {
+		        	var new_url = baseUrl+'/colleges?'+form_data;
+		        	window.history.pushState({}, '', new_url);
+		            $('.collegeView').html(markup);
+		            $('.loader').css("display", "none");
+		        }); 
+			});
+		}			
 	});
 </script>
 @stop
