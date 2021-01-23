@@ -58,8 +58,17 @@ class SearchController extends Controller
 
     public function filterCollegeResult(Request $request)
     {
-        $result = $request->all();
-        $form_data=  array();
+        if (!empty($request->all())) {
+           
+            $request->session()->put('form_data', $request->all());
+        }
+        
+        if($request->session()->has('form_data'))
+        {
+           $result=  $request->session()->get('form_data');
+        }else{
+            $result = array();
+        }
         $data=  array();
         parse_str($result['form_data'], $form_data);
 
@@ -103,7 +112,7 @@ class SearchController extends Controller
         }
 
         elseif (!empty($form_data['ownership'])) {
-            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10)->appends($form_data);
+            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10)->appends($form_data); 
         }
 
         elseif (!empty($form_data['rating'])) {

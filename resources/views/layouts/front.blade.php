@@ -234,9 +234,6 @@
   	<!--------------------------------------------------- Course & Colleges Autocomplete Name Filter Script Start ----------------------------------------------- -->
  	<script>
 	$(document).ready(function() {
-
-		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-		var baseUrl = '{{ URL::to('/') }}';
 	 	$("#filter_course_name").autocomplete({
 	        source: function(request, response) {
 	        	var title  = request.term;	        	
@@ -261,11 +258,7 @@
 		    select: function (event, ui) {
 	           	$(this).val(ui.item.label);
 	           	$('#filter_course_name_id').val(ui.item.slug);
-				var course_form_data = $( "#coursefilterform :input" ).serialize();
-				$.post(baseUrl+'/courses', {course_form_data: course_form_data, _token: CSRF_TOKEN}, function(markup)
-		        {
-		            $('.courseView').html(markup);
-		        }); 
+				course_filter(); 
 	        }
 		});
 
@@ -293,15 +286,7 @@
 		    select: function (event, ui){
 		    	$(this).val(ui.item.label);
 	           	$('#filter_college_name_id').val(ui.item.slug);
-	           	$('.loader').css("display", "block");
-	           	var form_data = $( "#collegefilterform :input" ).serialize();
-				$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
-		        {
-		        	var new_url = baseUrl+'/colleges?'+form_data;
-	        		window.history.pushState({}, '', new_url);
-		            $('.collegeView').html(markup);
-		            $('.loader').css("display", "none");
-		        }); 
+	           	college_filter(); 
 		    }
 		});
 	});
@@ -311,36 +296,74 @@
 	<!-- ----------------------------------------------------- Courses Sidebar Filters Script Start --------------------------------------------------------------->
 	<script>
 		$(document).ready(function(){		
-
-			var baseUrl = '{{ URL::to('/') }}';				
-			var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
 			$('.filter_course').on('change', function (e) {
 				e.preventDefault(); 
-	            $('.loader').css("display", "block");
-				var course_form_data = $( "#coursefilterform :input" ).serialize();
-				$.post(baseUrl+'/courses', {course_form_data: course_form_data, _token: CSRF_TOKEN}, function(markup)
-		        {
-		            $('.courseView').html(markup);
-		            $('.loader').css("display", "none");
-		        }); 
+	            course_filter(); 
 	    	});
 
 	    	$('#filter_course_name').keyup(function() {
 			    var count_val = this.value.length;
 			    if (count_val < 1) {
 			    	$('#filter_course_name_id').removeAttr('value').trigger('change');
-			    	$('.loader').css("display", "block");
-			    	var course_form_data = $( "#coursefilterform :input" ).serialize();
-					$.post(baseUrl+'/courses', {course_form_data: course_form_data, _token: CSRF_TOKEN}, function(markup)
-			        {
-			            $('.courseView').html(markup);
-			            $('.loader').css("display", "none");
-			        });
+			    	course_filter();
 			    }
 			});
 		});
 	</script>
 	<!-------------------------------------------------------- Courses Sidebar Filters Script End -------------------------------------------------------------- --> 
+
+	<!-------------------------------------------------------- College Sidebar Filters Script Start --------------------------------------------------------- -->
+	<script>
+		$(document).ready(function(){
+			$(window).load(function(){
+				college_filter();
+			});		
+
+			$('.filter_colleges').on('change', function (e) {
+				e.preventDefault(); 
+				college_filter();
+	    	});
+
+	    	$('#filter_college_name').keyup(function() {
+			    var count_val = this.value.length;
+			    if (count_val < 1) {
+			    	$('#filter_college_name_id').removeAttr('value').trigger('change');
+			    	college_filter();
+			    }
+			});
+		});
+	</script>
+	<!-------------------------------------------------------- College Sidebar Filters Script End --------------------------------------------------------- -->
+
+	<!-------------------------------------------------------- College Filter Ajax Request Start -------------------------------------------------------------- --> 
+
+	<script>
+		var baseUrl = '{{ URL::to('/') }}';				
+		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    	function college_filter() {
+    		$('.loader').css("display", "block");
+			var form_data = $( "#collegefilterform :input" ).serialize();
+
+			$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
+	        {
+	        	var new_url = baseUrl+'/colleges?'+form_data;
+	        	window.history.pushState({}, '', new_url);
+	            $('.collegeView').html(markup);
+	            $('.loader').css("display", "none");
+	        }); 
+    	}
+
+    	function course_filter() {
+    		$('.loader').css("display", "block");
+	    	var course_form_data = $( "#coursefilterform :input" ).serialize();
+			$.post(baseUrl+'/courses', {course_form_data: course_form_data, _token: CSRF_TOKEN}, function(markup)
+	        {
+	            $('.courseView').html(markup);
+	            $('.loader').css("display", "none");
+	        });
+    	}
+	</script>
+	<!-------------------------------------------------------- College Filter Ajax Request End -------------------------------------------------------------- --> 
 </body>
 </html>

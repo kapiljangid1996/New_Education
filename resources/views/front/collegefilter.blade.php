@@ -3,17 +3,7 @@
 		<div class="col-xl-6 col-sm-6"></div>
 		<div class="col-xl-6 col-md-6">
 			<div class="site-pagination on-top pull-right">
-				<ul>
-					@if($colleges->previousPageUrl() != null)
-						<li><a href="{{$colleges->previousPageUrl()}}"><i class="fa fa-long-arrow-left"></i></a></li>
-					@endif
-					<li><a href="#" class="active">{!! $colleges->currentPage() !!}</a></li>
-					<li>of</li>
-					<li><a href="#">{!! $colleges->lastPage() !!}</a></li>
-					@if($colleges->nextPageUrl() != null)
-						<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
-					@endif
-				</ul>
+				<span>Showing {{ $colleges->total() }} Colleges</span>
 			</div>
 			<div class="product-view-system pull-right" role="tablist">
 				<ul class="nav nav-tabs">
@@ -25,7 +15,7 @@
 	</div>
 	<div class="tab-content">
 		<!--single-tab-->
-		<div id="grid-colleges" class="tab-pane fade in show active">
+		<div id="grid-colleges" class="tab-pane fade in show active infinite-scroll2">
 			<div class="row">
 				@foreach($colleges as $key => $college)
 					<div class="col-lg-6 col-sm-6 mt-30">
@@ -42,7 +32,7 @@
 									</div>
 								</div>
 								<div class="course-text mt-10">
-									<p class="show-read-more">{{ $college->short_description }}</p>
+									<p>{!!  substr(strip_tags($college->short_description), 0, 150) !!}</p>
 								</div>
 							</div>
 							<div class="course-meta">
@@ -51,6 +41,7 @@
 						</div>
 					</div>
 				@endforeach
+				{!! $colleges->links("pagination::bootstrap-4") !!}
 			</div>
 		</div>
 		<!--single-tab-->
@@ -73,7 +64,7 @@
 										<p>{{$college->city_name->name}}, {{$college->state_name->name}}</p>
 										<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_st)->format('d F, Y')}}</a>
 									</div>
-									<p class="show-read-more">{{ $college->short_description }}</p>
+									<p>{!!  substr(strip_tags($college->short_description), 0, 150) !!}</p>
 								</div>
 							</div>
 						</div>
@@ -84,49 +75,35 @@
 	</div>
 	<div class="row align-items-center mt-30">
 		<div class="col-lg-6">
-			<div class="site-pagination">
-				<ul>
-					@if($colleges->previousPageUrl() != null)
-						<li><a href="{{$colleges->previousPageUrl()}}"><i class="fa fa-long-arrow-left"></i></a></li>
-					@endif
-					<li><a href="#" class="active">{!! $colleges->currentPage() !!}</a></li>
-					<li>of</li>
-					<li><a href="#">{!! $colleges->lastPage() !!}</a></li>
-					@if($colleges->nextPageUrl() != null)
-						<li><a href="{{$colleges->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
-					@endif
-				</ul>
-			</div>
+			
 		</div>
 		<div class="col-lg-6">
 			<div class="product-results pull-right">
-				<span>Showing {{ $colleges->firstItem() }}–{{ $colleges->lastItem() }} of {{ $colleges->total() }} results</span>
+				<span>Showing {{ $colleges->total() }} Colleges</span>
 			</div>
 		</div>
 	</div>
 </div>
-<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-<script>
-$(document).ready(function(){
-    var maxLength = 120;
-    $(".show-read-more").each(function(){
-        var myStr = $(this).text();
-        if($.trim(myStr).length > maxLength){
-            var newStr = myStr.substring(0, maxLength);
-            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-            $(this).empty().html(newStr);
-            $(this).append(' <a " class="read-more">...</a>');
-            $(this).append('<span class="more-text">' + removedStr + '</span>');
-        }
-    });
-    $(".read-more").click(function(){
-        $(this).siblings(".more-text").contents().unwrap();
-        $(this).remove();
-    });
-});
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{asset('js/scroll.js')}}"></script>
+<script type="text/javascript">
+      $(document).ready(function () {
+		    $('ul.pagination').hide();
+		    $('.infinite-scroll2').jscroll({
+		    	autoTrigger: true,
+		        debug: true,
+		        loadingHtml: '<img class="center-block" src="http://localhost/New_Education/public/FrontDesign/images/1.gif" width="100px" alt="Loading..." />',
+		        padding: 0,
+		        nextSelector: '.pagination li.active + li a',
+		        contentSelector: 'div.infinite-scroll',
+		        callback: function() {
+		            $('ul.pagination').remove();            
+		        }
+		    });
+		    //setTimeout(function(){ filter(); }, 500);
+		    //alert('jh');
+      });
+
 </script>
-<style>
-    .show-read-more .more-text{
-        display: none;
-    }
-</style>

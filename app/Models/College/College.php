@@ -115,7 +115,7 @@ class College extends Model
 
             $fullPath = public_path('Uploads/College/Image/'.$imageName);
             $destinationPath = public_path('Uploads/College/Image');
-            $tiny =  \Tinify\setKey('tlrvrpfFG46Jx9ZSt2Gc2prMmWy6xVtS');
+            $tiny =  \Tinify\setKey('zKTqyTH753yT0P1FTGYyDQscTG1mQSVF');
 
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
@@ -132,7 +132,7 @@ class College extends Model
 
             $fullPath = public_path('Uploads/College/Logo/'.$logoName);
             $destinationPath = public_path('Uploads/College/Logo');
-            $tiny =  \Tinify\setKey('tlrvrpfFG46Jx9ZSt2Gc2prMmWy6xVtS');
+            $tiny =  \Tinify\setKey('zKTqyTH753yT0P1FTGYyDQscTG1mQSVF');
 
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
@@ -204,7 +204,7 @@ class College extends Model
 
             $fullPath = public_path('Uploads/College/Image/'.$imageName);
             $destinationPath = public_path('Uploads/College/Image');
-            $tiny =  \Tinify\setKey('tlrvrpfFG46Jx9ZSt2Gc2prMmWy6xVtS');
+            $tiny =  \Tinify\setKey('zKTqyTH753yT0P1FTGYyDQscTG1mQSVF');
 
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
@@ -232,7 +232,7 @@ class College extends Model
 
             $fullPath = public_path('Uploads/College/Logo/'.$logoName);
             $destinationPath = public_path('Uploads/College/Logo');
-            $tiny =  \Tinify\setKey('tlrvrpfFG46Jx9ZSt2Gc2prMmWy6xVtS');
+            $tiny =  \Tinify\setKey('zKTqyTH753yT0P1FTGYyDQscTG1mQSVF');
 
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
