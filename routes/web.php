@@ -74,6 +74,7 @@ Route::prefix('admin')->group(function (){
 
 	//Menu Builder
 	Route::resource('menu', App\Http\Controllers\Admin\MenusController::class);
+	Route::get('/menu-manager', [App\Http\Controllers\Admin\MenusController::class, 'manageMenuPage']);
 
 	//Category Maker
 	Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class);

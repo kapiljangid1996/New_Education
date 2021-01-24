@@ -49,4 +49,10 @@ class MenusController extends Controller
         $menus->delete();
         return redirect()->route('menu.index')->with('success','Menu Deleted!');
     }
+
+    public function manageMenuPage()
+    {
+        $menu_types = Menu::where('status',1)->get();
+        return view('admin.menu.manage_menu')->with('menu_types',$menu_types);
+    }
 }
