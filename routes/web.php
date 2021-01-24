@@ -72,6 +72,9 @@ Route::prefix('admin')->group(function (){
 	//Logout
 	Route::get('/logout', [App\Http\Controllers\Auth\AdminLoginController::class, 'logout'])->name('admin.logout');
 
+	//Menu Builder
+	Route::resource('menu', App\Http\Controllers\Admin\MenusController::class);
+
 	//Category Maker
 	Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class);
 

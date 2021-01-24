@@ -335,7 +335,7 @@
 	</script>
 	<!-------------------------------------------------------- College Sidebar Filters Script End --------------------------------------------------------- -->
 
-	<!-------------------------------------------------------- College Filter Ajax Request Start -------------------------------------------------------------- --> 
+	<!-------------------------------------------------------- College & Courses Filter Ajax Request Start ------------------------------------------------ --> 
 
 	<script>
 		var baseUrl = '{{ URL::to('/') }}';				
@@ -347,8 +347,8 @@
 
 			$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
 	        {
-	        	var new_url = baseUrl+'/colleges?'+form_data;
-	        	window.history.pushState({}, '', new_url);
+	        	//var new_url = baseUrl+'/colleges';
+	        	//window.history.pushState({}, '', new_url);
 	            $('.collegeView').html(markup);
 	            $('.loader').css("display", "none");
 	        }); 

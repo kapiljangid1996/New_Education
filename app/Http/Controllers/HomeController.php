@@ -47,14 +47,14 @@ class HomeController extends Controller
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);  /* Get College Name */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);  /* Get College Name */
         }
 
         elseif (!empty($form_data['ownership']) && !empty($form_data['college_name'])) {
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);   /* Get College Name */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);   /* Get College Name */
         }
 
         elseif (!empty($form_data['ownership']) && !empty($form_data['rating'])) {
@@ -72,18 +72,18 @@ class HomeController extends Controller
 
             $id = $college_id1->union($college_id2);    /* Merge colleges ids from ownership and ratings instances */
 
-            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$id)->paginate(10)->appends($form_data);   /* Get all the colleges Merge colleges ids */
+            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$id)->paginate(10);   /* Get all the colleges Merge colleges ids */
         }
 
         elseif (!empty($form_data['college_name']) && !empty($form_data['rating'])) {
 
             $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
 
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10)->appends($form_data);   /* Get all the colleges Merge colleges ids */
+            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);   /* Get all the colleges Merge colleges ids */
         }
 
         elseif (!empty($form_data['ownership'])) {
-            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10)->appends($form_data); 
+            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10); 
         }
 
         elseif (!empty($form_data['rating'])) {
@@ -94,11 +94,11 @@ class HomeController extends Controller
                     $data[] = $rate;
                 }                         
             }
-            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$data)->paginate(10)->appends($form_data);
+            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$data)->paginate(10);
         }
 
         elseif (!empty($form_data['college_name'])) {
-            $colleges = College::with('state_name')->with('city_name')->where('id',$form_data['college_name'])->paginate(10)->appends($form_data);;
+            $colleges = College::with('state_name')->with('city_name')->where('id',$form_data['college_name'])->paginate(10);;
         }
 
         else{
