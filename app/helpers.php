@@ -1,10 +1,10 @@
 <?php 
 function front_menu($MenuPagemodel,$menu_id, $classes = ''){
 	$html = '';
-	$main_ul_class = isset($classes['submenu']) ? $classes['submenu'] : '';
-	$html .= '<div class="col-xl-7 col-lg-9 col-sm-3 col-3"><div class="mainmenu"><ul class="'.$main_ul_class.'"><nav>';
+	$main_ul_class = isset($classes['main_ul_class']) ? $classes['main_ul_class'] : '';
+	$html .= '<div class="col-xl-7 col-lg-9 col-sm-3 col-3"><div class="mainmenu"><nav><ul>';
 	$html .= getMenusHtml($MenuPagemodel,$menu_id,0,0,'',$classes);
-	$html .= '</nav><ul></div></div>';
+	$html .= '<ul></nav></div></div>';
 	
 	
 	return  $html;
@@ -23,19 +23,19 @@ if(!empty($menu_id)){
 			$menusArr  = array();
 			$menusArr['children'] = getChildMenusList($MenuPagemodel,$menu_id,$record['id']);
 			
-			$main_li_class= isset($classes['submenu']) ? $classes['submenu'] : '';
+			$main_li_class= isset($classes['']) ? $classes[''] : '';
 			$target = ($record['new_tab'] == 1) ? '_blank' : '';
 			if(!empty($menusArr['children'])){
-				$child_ul_class =  isset($classes['submenu sub-2']) ? $classes['submenu sub-2'] : '';
+				$child_ul_class =  isset($classes['child_ul_class']) ? $classes['child_ul_class'] : '';
 			}					
-			$html .= '<li class="'.$main_li_class.'">';
-			$slug = str_replace('#BASE_URL',URL::to('/'),$record['slug']);
+			$html .= '<li>';
+			$slug = $record['slug'];
 			$html .= '<a href="'.$slug.'" target="'.$target.'">';
 			$html .= $record['title'];
 			$html .= '</a>';
 			
 			if(!empty($menusArr['children'])){
-				$sub_child_ul_class = ($lavel > 1) ? 'main-nav__sub-2' : '';
+				$sub_child_ul_class = ($lavel > 1) ? 'submenu sub-2' : '';
 				$html .= '<ul class="'.$child_ul_class.$sub_child_ul_class.'">';
 				$html .= getMenusHtml($MenuPagemodel,$menu_id,$record['id'],$lavel);
 				$html .= '</ul>';

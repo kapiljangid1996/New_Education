@@ -51,7 +51,7 @@
 					</div>
 					<div class="form-group row">
 						<div class="col-sm-12">
-							<input type="text" class="form-control" name="url" placeholder="Enter URL" required="required" value="http://">
+							<input type="text" class="form-control" name="url" placeholder="Enter URL" value="http://">
 							<input type="hidden"  name="link_type" value="<?php echo 'custom-links'; ?>">
 						</div>
 					</div>
@@ -226,7 +226,7 @@
 			}
 			
 			
-			if(menu_title != '' && menu_slug != ''){
+			if(menu_title != ''){
 				
 				 $.ajax({
 					url : baseUrl+'/admin/menu/ajaxEditMenuPage',
@@ -281,7 +281,7 @@
          
 		 <div class="form-group">
             <label for="recipient-name" class="col-form-label">Slug*:</label>
-            <input type="text" class="form-control" id="menu_slug" readonly="readonly" required>
+            <input type="text" class="form-control" id="menu_slug" >
           </div>
 		  
 		  

@@ -9,7 +9,7 @@
 					<a href="{{url('/')}}"><img src="{{asset('Uploads/Site/').'/'.$settings->logo}}" /></a>
 				</div>
 			</div>
-			<?php echo front_menu($MenuPagemodel,2,array('main_ul_class'=> 'main-nav__list','main_li_class'=>'','child_ul_class'=>'main-nav__sub','child_li_class'=>'')); ?>
+			<?php echo front_menu($MenuPagemodel,2,array('main_ul_class'=> '','main_li_class'=>'','child_ul_class'=>'submenu','child_li_class'=>'','sub_child_ul_class'=>'submenu sub-2')); ?>
 			<div class="col-xl-3 col-lg-1 col-sm-5 col-5">
 				<div class="header-right header_right">
 					<a href="#" class="btn-common ds-md-none mr-90">Get Started</a>
