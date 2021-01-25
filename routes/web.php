@@ -74,7 +74,13 @@ Route::prefix('admin')->group(function (){
 
 	//Menu Builder
 	Route::resource('menu', App\Http\Controllers\Admin\MenusController::class);
-	Route::get('/menu-manager', [App\Http\Controllers\Admin\MenusController::class, 'manageMenuPage']);
+	Route::get('/menu/manage-menu/{id}', [App\Http\Controllers\Admin\MenusController::class, 'manageMenuPage'])->name('menu_manager.show');
+	Route::post('/menu/ajaxGetMenuLinks', [App\Http\Controllers\Admin\MenusController::class, 'ajaxGetMenuLinks']);
+	Route::post('/menu/save_menu_links', [App\Http\Controllers\Admin\MenusController::class, 'save_menu_links']);
+	Route::post('/menu/ajaxSaveMenuStructure', [App\Http\Controllers\Admin\MenusController::class, 'ajaxSaveMenuStructure']);
+	Route::post('/menu/ajaxDeleteMenuPage', [App\Http\Controllers\Admin\MenusController::class, 'ajaxDeleteMenuPage']);
+	Route::post('/menu/ajaxMenuPageDetail', [App\Http\Controllers\Admin\MenusController::class, 'ajaxMenuPageDetail']);
+	Route::post('/menu/ajaxEditMenuPage', [App\Http\Controllers\Admin\MenusController::class, 'ajaxEditMenuPage']);
 
 	//Category Maker
 	Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class);

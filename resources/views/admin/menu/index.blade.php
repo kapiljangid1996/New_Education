@@ -65,6 +65,7 @@
 								<button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted sr-only">Action</span></button>
 								<div class="dropdown-menu dropdown-menu-right">
 									<a class="dropdown-item" href="{{route('menu.edit', $menu->id)}}">Edit</a>
+									<a class="dropdown-item" href="{{route('menu_manager.show', $menu->id)}}">View</a>
 									<form action="{{ url('/admin/menu', $menu->id) }}" method="POST">
 										@csrf
 	                      				@method('DELETE')

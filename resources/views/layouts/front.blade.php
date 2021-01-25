@@ -314,10 +314,7 @@
 
 	<!-------------------------------------------------------- College Sidebar Filters Script Start --------------------------------------------------------- -->
 	<script>
-		$(document).ready(function(){
-			$(window).load(function(){
-				college_filter();
-			});		
+		$(document).ready(function(){	
 
 			$('.filter_colleges').on('change', function (e) {
 				e.preventDefault(); 

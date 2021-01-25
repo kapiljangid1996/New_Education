@@ -39,6 +39,7 @@ class ComposerStaticInit3e146b75825f0088280b8cfe967d0907
         '6b34c85f7b1ad6faa15aa12109e030f2' => __DIR__ . '/..' . '/realrashid/sweet-alert/src/functions.php',
         '74ed299072414d276bb7568fe71d5b0c' => __DIR__ . '/..' . '/tinify/tinify/lib/Tinify.php',
         '9635627915aaea7a98d6d14d04ca5b56' => __DIR__ . '/..' . '/tinify/tinify/lib/Tinify/Exception.php',
+        'b4e3f29b106af37a2bb239f73cdf68c7' => __DIR__ . '/../..' . '/app/helpers.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -538,6 +539,7 @@ class ComposerStaticInit3e146b75825f0088280b8cfe967d0907
         'App\\Http\\Controllers\\Admin\\CollegesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CollegesController.php',
         'App\\Http\\Controllers\\Admin\\CoursesController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/CoursesController.php',
         'App\\Http\\Controllers\\Admin\\ExamsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/ExamsController.php',
+        'App\\Http\\Controllers\\Admin\\MenusController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/MenusController.php',
         'App\\Http\\Controllers\\Admin\\SettingsController' => __DIR__ . '/../..' . '/app/Http/Controllers/Admin/SettingsController.php',
         'App\\Http\\Controllers\\Auth\\AdminLoginController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminLoginController.php',
         'App\\Http\\Controllers\\Auth\\AdminRegisterController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/AdminRegisterController.php',
@@ -562,6 +564,7 @@ class ComposerStaticInit3e146b75825f0088280b8cfe967d0907
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Models\\Admin' => __DIR__ . '/../..' . '/app/Models/Admin.php',
         'App\\Models\\Category' => __DIR__ . '/../..' . '/app/Models/Category.php',
+        'App\\Models\\City' => __DIR__ . '/../..' . '/app/Models/City.php',
         'App\\Models\\College\\Admission' => __DIR__ . '/../..' . '/app/Models/College/Admission.php',
         'App\\Models\\College\\College' => __DIR__ . '/../..' . '/app/Models/College/College.php',
         'App\\Models\\College\\CourseFee' => __DIR__ . '/../..' . '/app/Models/College/CourseFee.php',
@@ -583,8 +586,11 @@ class ComposerStaticInit3e146b75825f0088280b8cfe967d0907
         'App\\Models\\Exam\\ExamQuestion' => __DIR__ . '/../..' . '/app/Models/Exam/ExamQuestion.php',
         'App\\Models\\Exam\\ExamResult' => __DIR__ . '/../..' . '/app/Models/Exam/ExamResult.php',
         'App\\Models\\Exam\\ExamSyllabus' => __DIR__ . '/../..' . '/app/Models/Exam/ExamSyllabus.php',
+        'App\\Models\\Menu' => __DIR__ . '/../..' . '/app/Models/Menu.php',
+        'App\\Models\\MenuPage' => __DIR__ . '/../..' . '/app/Models/MenuPage.php',
         'App\\Models\\Rating' => __DIR__ . '/../..' . '/app/Models/Rating.php',
         'App\\Models\\Setting' => __DIR__ . '/../..' . '/app/Models/Setting.php',
+        'App\\Models\\State' => __DIR__ . '/../..' . '/app/Models/State.php',
         'App\\Models\\User' => __DIR__ . '/../..' . '/app/Models/User.php',
         'App\\Providers\\AppServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AppServiceProvider.php',
         'App\\Providers\\AuthServiceProvider' => __DIR__ . '/../..' . '/app/Providers/AuthServiceProvider.php',

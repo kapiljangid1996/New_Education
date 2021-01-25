@@ -57,6 +57,7 @@
             </div>
         </main>
         
+    <input type="hidden" id="base_url" name="base_url" value="{{ URL::to('/') }}">
     </div>
 
     <!-- Script -->
@@ -85,6 +86,10 @@
     <script src="{{asset('AdminDesign/js/uppy.min.js')}}"></script>
     <script src="{{asset('AdminDesign/js/quill.min.js')}}"></script>
     <script src="{{asset('AdminDesign/js/apps.js')}}"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css"/>
+    <link rel="stylesheet" href="{{asset('AdminDesign/drag_drop_menu/bootstrap-iconpicker/css/bootstrap-iconpicker.min.css')}}">
+    <script type="text/javascript" src="{{asset('AdminDesign/drag_drop_menu/jquery-menu-editor.js')}}"></script>
+    <script type="text/javascript" src="{{asset('AdminDesign/drag_drop_menu/bootstrap-iconpicker/js/bootstrap-iconpicker.min.js')}}"></script>
     <script>
         $("document").ready(function(){
             setTimeout(function(){

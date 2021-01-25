@@ -202,4 +202,14 @@
         }
     });
 </script>
+
+<!-------------------------------------------------------- College Sidebar Filters Script Start --------------------------------------------------------- -->
+<script>
+	$(document).ready(function(){
+		$(window).load(function(){
+			college_filter();
+		});
+	});
+</script>
+<!-------------------------------------------------------- College Sidebar Filters Script End --------------------------------------------------------- -->
 @stop
