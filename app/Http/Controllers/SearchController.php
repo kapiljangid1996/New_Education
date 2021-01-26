@@ -7,6 +7,7 @@ use App\Models\College\College;
 use App\Models\Course\Course;
 use App\Models\Rating;
 use App\Models\City;
+use App\Models\Filter;
 
 class SearchController extends Controller
 {
@@ -63,82 +64,7 @@ class SearchController extends Controller
 
     public function filterCollegeResult(Request $request)
     {
-        if (!empty($request->all())) {
-           
-            $request->session()->put('form_data', $request->all());
-        }
-        
-        if($request->session()->has('form_data'))
-        {
-           $result=  $request->session()->get('form_data');
-        }else{
-            $result = array();
-        }
-        $data=  array();
-        parse_str($result['form_data'], $form_data);
-
-        if (!empty($form_data['ownership']) && !empty($form_data['rating']) && !empty($form_data['college_name'])) {
-
-            $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
-
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);  /* Get College Name */
-        }
-
-        elseif (!empty($form_data['ownership']) && !empty($form_data['college_name'])) {
-
-            $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
-
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);   /* Get College Name */
-        }
-
-        elseif (!empty($form_data['ownership']) && !empty($form_data['rating'])) {
-
-            $college_id1 = College::whereIn('ownership',$form_data['ownership'])->pluck('id'); /* Get Colleges Id Accroding to the Ownership instances*/
-
-            foreach ($form_data['rating'] as $key => $value) {
-                $min_rate = $value - 0.99;
-                $ratings = Rating::whereBetween('rating',[$min_rate, $value])->pluck('college_id');     /* Get all the colleges id according to the ratings n-1 to n*/                 
-                foreach ($ratings as $key => $rate) {
-                    $data[] = $rate;
-                }                         
-            }
-            $college_id2 = College::whereIn('id',$data)->pluck('id'); /* Get Colleges Id Accroding to the Ratings instances*/
-
-            $id = $college_id1->union($college_id2);    /* Merge colleges ids from ownership and ratings instances */
-
-            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$id)->paginate(10);   /* Get all the colleges Merge colleges ids */
-        }
-
-        elseif (!empty($form_data['college_name']) && !empty($form_data['rating'])) {
-
-            $id = $form_data['college_name']; /* Get Colleges Id Accroding to the Name instances*/
-
-            $colleges = College::with('state_name')->with('city_name')->where('id',$id)->paginate(10);   /* Get all the colleges Merge colleges ids */
-        }
-
-        elseif (!empty($form_data['ownership'])) {
-            $colleges = College::with('state_name')->with('city_name')->whereIn('ownership',$form_data['ownership'])->orderBy('id', 'desc')->paginate(10); 
-        }
-
-        elseif (!empty($form_data['rating'])) {
-            foreach ($form_data['rating'] as $key => $value) {
-                $min_rate = $value - 0.99;
-                $ratings = Rating::whereBetween('rating',[$min_rate, $value])->pluck('college_id');                 
-                foreach ($ratings as $key => $rate) {
-                    $data[] = $rate;
-                }                         
-            }
-            $colleges = College::with('state_name')->with('city_name')->whereIn('id',$data)->paginate(10);
-        }
-
-        elseif (!empty($form_data['college_name'])) {
-            $colleges = College::with('state_name')->with('city_name')->where('id',$form_data['college_name'])->paginate(10);;
-        }
-
-        else{
-            $colleges = College::with('state_name')->with('city_name')->where('status','=',1)->orderBy('id', 'desc')->paginate(10); 
-        }
-
+        $colleges= Filter::filterCollege($request);
         return view('front.collegefilter')->with('colleges',$colleges); 
     }
 
