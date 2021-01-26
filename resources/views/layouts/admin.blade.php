@@ -24,6 +24,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="{{asset('AdminDesign/css/app-light.css')}}" id="lightTheme">
     <link rel="stylesheet" href="{{asset('AdminDesign/css/app-dark.css')}}" id="darkTheme" disabled>
+    <link href="{{ asset('AdminDesign/vendors/DataTables/datatables.min.css') }}" rel="stylesheet" />
     <style>
         .breadcrumb
         {
@@ -62,6 +63,8 @@
 
     <!-- Script -->
     <script src="{{asset('AdminDesign/js/jquery.min.js')}}"></script>
+    
+    <script src="{{ asset('AdminDesign/vendors/DataTables/datatables.min.js') }}" type="text/javascript"></script>
     <script src="{{asset('AdminDesign/js/popper.min.js')}}"></script>
     <script src="{{asset('AdminDesign/js/moment.min.js')}}"></script>
     <script src="{{asset('AdminDesign/js/bootstrap.min.js')}}"></script>
@@ -106,6 +109,13 @@
              });
         });
     });
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            $('#example-table').DataTable({
+                pageLength: 10,
+            });
+        })
     </script>
     <script type="text/javascript">
         $("#name").keyup(function(){

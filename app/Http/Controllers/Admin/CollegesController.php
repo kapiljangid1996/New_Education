@@ -26,7 +26,7 @@ class CollegesController extends Controller
 
     public function index()
     {
-    	$colleges = College::with('category')->orderBy('id', 'desc')->paginate(10);
+    	$colleges = College::with('category')->orderBy('id', 'desc')->get();
         return view('admin.college.index')->with('colleges',$colleges);
     }
 
@@ -73,7 +73,7 @@ class CollegesController extends Controller
 
     public function collegeCourseFee($id)
     {
-        $course_fees = CourseFee::with('course')->with('exam')->with('coursefee_exam')->where('college_id', '=', $id)->paginate(10);
+        $course_fees = CourseFee::with('course')->with('exam')->with('coursefee_exam')->where('college_id', '=', $id)->get();
         $exams = Exam::where('status', '=', 1)->get();
         return view('admin.college.course_fee.index')->with('id',$id)->with('course_fees',$course_fees)->with('exams',$exams);
     }
@@ -116,7 +116,7 @@ class CollegesController extends Controller
 
     public function collegeAdmission($id)
     {
-        $admissions = Admission::where('college_id', '=', $id)->paginate(10);
+        $admissions = Admission::where('college_id', '=', $id)->get();
         return view('admin.college.admission.index')->with('id',$id)->with('admissions',$admissions);
     }
 
@@ -154,7 +154,7 @@ class CollegesController extends Controller
 
     public function collegePlacement($id)
     {
-        $placements = Placement::where('college_id', '=', $id)->paginate(10);
+        $placements = Placement::where('college_id', '=', $id)->get();
         return view('admin.college.placement.index')->with('id',$id)->with('placements',$placements);
     }
 
@@ -192,7 +192,7 @@ class CollegesController extends Controller
 
     public function collegeCutOff($id)
     {
-        $cut_offs = CutOff::where('college_id', '=', $id)->paginate(10);
+        $cut_offs = CutOff::where('college_id', '=', $id)->get();
         return view('admin.college.cut_off.index')->with('id',$id)->with('cut_offs',$cut_offs);
     }
 
@@ -269,7 +269,7 @@ class CollegesController extends Controller
 
     public function collegeScholarship($id)
     {
-        $scholarships = Scholarship::where('college_id', '=', $id)->paginate(10);
+        $scholarships = Scholarship::where('college_id', '=', $id)->get();
         return view('admin.college.scholarship.index')->with('id',$id)->with('scholarships',$scholarships);
     }
 

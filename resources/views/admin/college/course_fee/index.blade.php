@@ -22,25 +22,10 @@
 		<div class="card shadow">
 			<div class="card-header">
 				<strong class="card-title">College Course & Fees</strong>
+				<a href="{{url('admin/college/course_fees/add_course_fees/'.$id)}}" class="btn btn-primary btn-round" style="float: right;">Add</a>
 			</div>
 			<div class="card-body">
-				<div class="toolbar">
-					<div class="row">
-						<div class="col-sm-6">
-							<a href="{{url('admin/college/course_fees/add_course_fees/'.$id)}}" class="btn btn-primary btn-round">Add</a>
-						</div>
-						<div class="col-sm-6">
-							<div class="dataTables_filter">
-								<label style="float: right;">
-									<span class="bmd-form-group bmd-form-group-sm">
-										<input type="text" class="form-control" id="myInput" value="" placeholder="Search">
-									</span>
-								</label>
-							</div>
-						</div>
-					</div>
-				</div>
-				<table class="table table-borderless table-hover">
+				<table id="example-table" class="table table-borderless table-hover" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -90,12 +75,6 @@
 						<?php  } ?>
 					</tbody>
 				</table>
-				<div class="row">
-					<ul class="pagination" style="margin-left: 15px">
-						{!! $course_fees->links("pagination::bootstrap-4") !!}
-					</ul>
-				</div>
-				<ul style="margin-left: 10px">{!! "Page " . $course_fees->currentPage() . " of " . $course_fees->lastPage()  !!}</ul>
 			</div>
 		</div>
 	</div>

@@ -40,10 +40,10 @@ class SearchController extends Controller
             $query = $request->get('query');
             $result = $request->get('type');
             if ($result == 'college') {
-                $data = College::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->orWhere('city', 'like', '%'.$query.'%')->orWhere('state', 'like', '%'.$query.'%')->get();
-                $output = '<ul class="dropdown-menu edutab" style="display:block;">';
+                $data = College::with('city_name')->orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->orWhere('city', 'like', '%'.$query.'%')->orWhere('state', 'like', '%'.$query.'%')->get();
+                $output = '<ul class="dropdown-menu edutab" style="display:block; height: 265px; overflow:hidden; overflow-y:scroll;">';
                 foreach($data as $row){             
-                    $output .= '<li><a class="search-list" href="/college/'.$row->slug.'">'.$row->name.'</a></li>';
+                    $output .= '<li><a class="search-list" href="/college/'.$row->slug.'">'.$row->name.', '.$row->city_name->name.'</a></li>';
                 }           
                 $output .= '</ul>';
             }

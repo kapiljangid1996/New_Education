@@ -21,16 +21,10 @@
 		<div class="card shadow">
 			<div class="card-header">
 				<strong class="card-title">Exam</strong>
+				<a href="{{route('menu.create')}}" class="btn btn-primary btn-fix" style="float: right;">Add New</a>
 			</div>
 			<div class="card-body">
-				<div class="toolbar">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="ibox-title"><a href="{{route('menu.create')}}" class="btn btn-primary btn-fix">Add New</a></div>
-						</div>
-					</div>
-				</div>
-				<table class="table table-borderless table-hover">
+				<table id="example-table" class="table table-borderless table-hover" cellspacing="0" width="100%">
 					<thead>
 						<tr>
                             <th>#</th>

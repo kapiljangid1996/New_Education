@@ -27,7 +27,7 @@ class ExamsController extends Controller
 
     public function index()
     {
-    	$exams = Exam::with('category')->paginate(10);
+    	$exams = Exam::with('category')->get();
         return view('admin.exam.index')->with('exams',$exams);
     }
 
@@ -67,7 +67,7 @@ class ExamsController extends Controller
 
     public function examOverview($id)
     {
-        $overviews = ExamOverview::where('exams_id', '=', $id)->paginate(10);
+        $overviews = ExamOverview::where('exams_id', '=', $id)->get();
         return view('admin.exam.overview.index')->with('id',$id)->with('overviews',$overviews);
     }
 
@@ -105,7 +105,7 @@ class ExamsController extends Controller
 
     public function examDate($id)
     {
-        $dates = ExamDate::where('exams_id', '=', $id)->paginate(10);
+        $dates = ExamDate::where('exams_id', '=', $id)->get();
         return view('admin.exam.date.index')->with('id',$id)->with('dates',$dates);
     }
 
@@ -143,7 +143,7 @@ class ExamsController extends Controller
 
     public function examSyllabus($id)
     {
-        $syllabi = ExamSyllabus::where('exams_id', '=', $id)->paginate(10);
+        $syllabi = ExamSyllabus::where('exams_id', '=', $id)->get();
         return view('admin.exam.syllabus.index')->with('id',$id)->with('syllabi',$syllabi);
     }
 
@@ -181,7 +181,7 @@ class ExamsController extends Controller
 
     public function examAppform($id)
     {
-        $appforms = ExamAppform::where('exams_id', '=', $id)->paginate(10);
+        $appforms = ExamAppform::where('exams_id', '=', $id)->get();
         return view('admin.exam.appform.index')->with('id',$id)->with('appforms',$appforms);
     }
 
@@ -219,7 +219,7 @@ class ExamsController extends Controller
 
     public function examPattern($id)
     {
-        $patterns = ExamPattern::where('exams_id', '=', $id)->paginate(10);
+        $patterns = ExamPattern::where('exams_id', '=', $id)->get();
         return view('admin.exam.pattern.index')->with('id',$id)->with('patterns',$patterns);
     }
 
@@ -257,7 +257,7 @@ class ExamsController extends Controller
 
     public function examPreparation($id)
     {
-        $preparations = ExamPreparation::where('exams_id', '=', $id)->paginate(10);
+        $preparations = ExamPreparation::where('exams_id', '=', $id)->get();
         return view('admin.exam.preparation.index')->with('id',$id)->with('preparations',$preparations);
     }
 
@@ -295,7 +295,7 @@ class ExamsController extends Controller
 
     public function examQuestion($id)
     {
-        $questions = ExamQuestion::where('exams_id', '=', $id)->paginate(10);
+        $questions = ExamQuestion::where('exams_id', '=', $id)->get();
         return view('admin.exam.question.index')->with('id',$id)->with('questions',$questions);
     }
 
@@ -333,7 +333,7 @@ class ExamsController extends Controller
 
     public function examAnswer($id)
     {
-        $answers = ExamAnswer::where('exams_id', '=', $id)->paginate(10);
+        $answers = ExamAnswer::where('exams_id', '=', $id)->get();
         return view('admin.exam.answer.index')->with('id',$id)->with('answers',$answers);
     }
 
@@ -371,7 +371,7 @@ class ExamsController extends Controller
 
     public function examResult($id)
     {
-        $results = ExamResult::where('exams_id', '=', $id)->paginate(10);
+        $results = ExamResult::where('exams_id', '=', $id)->get();
         return view('admin.exam.result.index')->with('id',$id)->with('results',$results);
     }
 
@@ -409,7 +409,7 @@ class ExamsController extends Controller
 
     public function examCutoff($id)
     {
-        $cutoffs = ExamCutOff::where('exams_id', '=', $id)->paginate(10);
+        $cutoffs = ExamCutOff::where('exams_id', '=', $id)->get();
         return view('admin.exam.cutoff.index')->with('id',$id)->with('cutoffs',$cutoffs);
     }
 
@@ -447,7 +447,7 @@ class ExamsController extends Controller
 
     public function examCounselling($id)
     {
-        $counsellings = ExamCounselling::where('exams_id', '=', $id)->paginate(10);
+        $counsellings = ExamCounselling::where('exams_id', '=', $id)->get();
         return view('admin.exam.counselling.index')->with('id',$id)->with('counsellings',$counsellings);
     }
 
