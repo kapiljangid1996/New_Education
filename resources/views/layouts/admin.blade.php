@@ -62,8 +62,7 @@
     </div>
 
     <!-- Script -->
-    <script src="{{asset('AdminDesign/js/jquery.min.js')}}"></script>
-    
+    <script src="{{asset('AdminDesign/js/jquery.min.js')}}"></script>    
     <script src="{{ asset('AdminDesign/vendors/DataTables/datatables.min.js') }}" type="text/javascript"></script>
     <script src="{{asset('AdminDesign/js/popper.min.js')}}"></script>
     <script src="{{asset('AdminDesign/js/moment.min.js')}}"></script>
@@ -99,16 +98,6 @@
                $("div.alert").remove();
             }, 4000 ); // 4 secs
         });
-    </script>
-    <script>
-    $(document).ready(function(){
-        $("#myInput").on("keyup", function() {
-            var value = $(this).val().toLowerCase();
-            $("#myTable tr").filter(function() {
-            $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
-             });
-        });
-    });
     </script>
     <script type="text/javascript">
         $(function() {

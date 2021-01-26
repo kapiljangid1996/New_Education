@@ -233,6 +233,9 @@ Route::prefix('admin')->group(function (){
 	//Site Setting
 	Route::get('/setting', [App\Http\Controllers\Admin\SettingsController::class, 'index']);	
 	Route::post('/setting/{id}', [App\Http\Controllers\Admin\SettingsController::class, 'update']);
+
+	//Page Maker
+	Route::resource('page', App\Http\Controllers\Admin\PagesController::class);
 });
 
 Route::get('/course/{slug}', [App\Http\Controllers\HomeController::class, 'courseDetail']);
