@@ -5,47 +5,11 @@
 			<div class="site-pagination on-top pull-right">
 				<span>Showing {{ $colleges->total() }} Colleges</span>
 			</div>
-			<div class="product-view-system pull-right" role="tablist">
-				<ul class="nav nav-tabs">
-					<li><a class="active" data-toggle="tab" href="#grid-colleges"><img src="{{asset('FrontDesign/images/icons/icon-grid.png')}}" alt="" /></a></li>
-					<li><a data-toggle="tab" href="#list-colleges"><img src="{{asset('FrontDesign/images/icons/icon-list.png')}}" alt="" /></a></li>
-				</ul>
-			</div>
 		</div>
 	</div>
 	<div class="tab-content">
 		<!--single-tab-->
-		<div id="grid-colleges" class="tab-pane fade in show active infinite-scroll2">
-			<div class="row">
-				@foreach($colleges as $key => $college)
-					<div class="col-lg-6 col-sm-6 mt-30">
-						<div class="course-single">
-							<div class="course-thumb">
-								<a href="{{url('/college/'.$college->slug)}}"><img src="{{asset('Uploads/College/Image/').'/'.$college->image}}" style="height: 225px;"></a>
-							</div>
-							<div class="course-info">
-								<div class="author-info">
-									<div class="author-name">
-										<img src="{{asset('Uploads/College/Logo/').'/'.$college->logo}}" alt="" />
-										<a href="{{url('/college/'.$college->slug)}}">{{$college->name}}</a>
-										<p style="margin-left: 70px;">{{$college->city_name->name}}, {{$college->state_name->name}}</p>
-									</div>
-								</div>
-								<div class="course-text mt-10">
-									<p>{!!  substr(strip_tags($college->short_description), 0, 150) !!}</p>
-								</div>
-							</div>
-							<div class="course-meta">
-								<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_st)->format('d F, Y')}}</a>
-							</div>
-						</div>
-					</div>
-				@endforeach
-				{!! $colleges->links("pagination::bootstrap-4") !!}
-			</div>
-		</div>
-		<!--single-tab-->
-		<div id="list-colleges" class="tab-pane fade">
+		<div id="list-colleges" class=" infinite-scroll2">
 			<div class="row">
 				@foreach($colleges as $key => $college)
 					<div class="col-lg-12 mt-30">
@@ -70,6 +34,7 @@
 						</div>
 					</div>
 				@endforeach
+				{!! $colleges->links("pagination::bootstrap-4") !!}
 			</div>
 		</div>
 	</div>

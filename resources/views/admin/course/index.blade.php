@@ -66,11 +66,6 @@
 						<?php  } ?>
 					</tbody>
 				</table>
-				<div class="row">
-					<ul class="pagination" style="margin-left: 15px">
-						{!! $courses->links("pagination::bootstrap-4") !!}
-					</ul>
-				</div>
 			</div>
 		</div>
 	</div>

@@ -75,7 +75,7 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6">
 							<div class="login-left overlay">
-								<img src="{{url('/')}}/public/FrontDesign/images/register1.jpg" alt="" />
+								<img src="{{url('/')}}/public/FrontDesign/register1.jpg" alt="" />
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -131,7 +131,7 @@
 					<div class="row align-items-center">
 						<div class="col-lg-6">
 							<div class="login-left overlay">
-								<img src="{{url('/')}}/public/FrontDesign/images/register.jpg" alt="" />
+								<img src="{{url('/')}}/public/FrontDesign/register.jpg" alt="" />
 							</div>
 						</div>
 						<div class="col-lg-6">
@@ -337,19 +337,6 @@
 	<script>
 		var baseUrl = '{{ URL::to('/') }}';				
 		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-    	function college_filter() {
-    		$('.loader').css("display", "block");
-			var form_data = $( "#collegefilterform :input" ).serialize();
-
-			$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
-	        {
-	        	//var new_url = baseUrl+'/colleges';
-	        	//window.history.pushState({}, '', new_url);
-	            $('.collegeView').html(markup);
-	            $('.loader').css("display", "none");
-	        }); 
-    	}
 
     	function course_filter() {
     		$('.loader').css("display", "block");

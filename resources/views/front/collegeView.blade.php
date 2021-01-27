@@ -40,7 +40,7 @@
 			<div class="col-lg-3">
 				<div class="site-sidebar">
 					<h3>Filters: </h3>
-					<form id="collegefilterform" method="post">
+					<form id="collegefilterform" method="get" action="#">
 						<!--search-->
 						<div class="sidebar-search">
 							<input id="filter_college_name" class="filter_colleges search_college" type="text" placeholder="Search College Name" />
@@ -87,57 +87,22 @@
 								<input type="checkbox" class="filter_colleges rating" name="rating[]" value="1"><i class="fa fa-star labelOwnership"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
 							</div>
 						</div>
+						<button class="btn btn-secondary">Submit</button>
 					</form>
 				</div>
 			</div>
-			<div class="col-lg-9 mt-sm-50 collegeView">
+			<div class="col-lg-9 mt-sm-50" id="collegeView">
 				<div class="row align-items-center mb-30">
 					<div class="col-xl-7 col-sm-6"></div>
 					<div class="col-xl-5 col-md-6">
 						<div class="site-pagination on-top pull-right">
 							<span>Showing {{ $colleges->total() }} Colleges</span>
 						</div>
-						<div class="product-view-system pull-right" role="tablist">
-							<ul class="nav nav-tabs">
-								<li><a class="active" data-toggle="tab" href="#grid-colleges"><img src="{{asset('FrontDesign/images/icons/icon-grid.png')}}" alt="" /></a></li>
-								<li><a data-toggle="tab" href="#list-colleges"><img src="{{asset('FrontDesign/images/icons/icon-list.png')}}" alt="" /></a></li>
-							</ul>
-						</div>
 					</div>
 				</div>
 				<div class="tab-content">
 					<!--single-tab-->
-					<div id="grid-colleges" class="tab-pane fade in show active infinite-scroll">
-						<div class="row">
-							@foreach($colleges as $key => $college)
-								<div class="col-lg-6 col-sm-6 mt-30">
-									<div class="course-single">
-										<div class="course-thumb">
-											<a href="{{url('/college/'.$college->slug)}}"><img src="{{asset('Uploads/College/Image/400x200/').'/'.$college->image}}" style="height: 225px;"></a>
-										</div>
-										<div class="course-info">
-											<div class="author-info">
-												<div class="author-name">
-													<img src="{{asset('Uploads/College/Logo/').'/'.$college->logo}}" alt="" />
-													<a href="{{url('/college/'.$college->slug)}}">{{$college->name}}</a>
-													<p style="margin-left: 70px;">{{$college->city_name->name}}, {{$college->state_name->name}}</p>
-												</div>
-											</div>
-											<div class="course-text mt-10">
-												<p>{!!  substr(strip_tags($college->short_description), 0, 150) !!}</p>
-											</div>
-										</div>
-										<div class="course-meta">
-											<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_st)->format('d F, Y')}}</a>
-										</div>
-									</div>
-								</div>
-							@endforeach
-							{!! $colleges->links("pagination::bootstrap-4") !!}
-						</div>
-					</div>
-					<!--single-tab-->
-					<div id="list-colleges" class="tab-pane fade">
+					<div id="list-colleges" class="infinite-scroll">
 						<div class="row">
 							@foreach($colleges as $key => $college)
 								<div class="col-lg-12 mt-30">
@@ -207,9 +172,26 @@
 <script>
 	$(document).ready(function(){
 		$(window).load(function(){
-			college_filter();
+			//college_filter();
 		});
 	});
 </script>
 <!-------------------------------------------------------- College Sidebar Filters Script End --------------------------------------------------------- -->
+
+<script>
+		var baseUrl = '{{ URL::to('/') }}';				
+		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
+    	function college_filter() {
+			var form_data = $( "#collegefilterform :input" ).serialize();
+
+			window.location.href = baseUrl +'/colleges?'+ form_data;
+
+			/*$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
+	        {
+	            $('#collegeView').html(markup);
+	            $('.loader').css("display", "none");
+	        });*/ 
+    	}
+	</script>
 @stop
