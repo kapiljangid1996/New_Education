@@ -11,21 +11,23 @@ class Filter extends Model
 	use HasFactory;
 
 	public static function filterCollege($request){
+
+       // print_r($request->all());
 		if (!empty($request->all())) {
 			$request->session()->put('form_data', $request->all());
 		}
 
 		if($request->session()->has('form_data')){
-			$result=  $request->session()->get('form_data');
+			$form_data=  $request->session()->get('form_data');
 		} 
 
 		else{
-			$result = array();
+			$form_data = array();
 		}
 
 		$data=  array();
 
-		parse_str($result['form_data'], $form_data);
+		//parse_str($result['form_data'], $form_data);
 
 		if (!empty($form_data['college_name']) && !empty($form_data['city']) && !empty($form_data['ownership']) && !empty($form_data['rating'])) {
 			$id = $form_data['college_name'];
@@ -88,7 +90,7 @@ class Filter extends Model
         }
 
         elseif (!empty($form_data['city'])){
-			$query = College::with('state_name')->with('city_name')->whereIn('city',$form_data['city'])->orderBy('id', 'desc')->paginate(40);
+			$query = College::with('state_name')->with('city_name')->whereIn('city',$form_data['city'])->orderBy('id', 'desc')->paginate(10);
 		}
 
         else{

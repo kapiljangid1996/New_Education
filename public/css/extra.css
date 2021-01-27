@@ -55,4 +55,5 @@ img#loader {
 .labelOwnership{
 	font-size: 16px;
 	margin-left: 15px;
+    pointer-events: none !important;
 }

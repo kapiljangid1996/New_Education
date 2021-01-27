@@ -57,7 +57,8 @@
 							<br>
 							<div style="overflow-y: scroll; height:250px;">
 								@foreach($cities as $city_value)
-									<input type="checkbox" class="filter_colleges" name="city[]" value="{{ $city_value->city_name ? $city_value->city_name->id : ''}}"><label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} ({{ $city_value['total']}})</label><br>
+									<input type="checkbox" class="filter_colleges" name="city[]" value="{{ $city_value->city_name ? $city_value->city_name->id : ''}}" <?php echo (isset($_GET['city']) && !empty($_GET['city']) && in_array($city_value->city_name->id,$_GET['city'])) ? 'checked=checked' : '' ;?> >
+									<label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} ({{ $city_value['total']}})</label><br>
 								@endforeach
 							</div>							
 						</div>
@@ -162,8 +163,7 @@
         nextSelector: '.pagination li.active + li a',
         contentSelector: 'div.infinite-scroll',
         callback: function() {
-            $('ul.pagination').remove();
-            
+            $('ul.pagination').remove();            
         }
     });
 </script>
