@@ -38,11 +38,12 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="site-sidebar">
-					<form id="coursefilterform" method="post">
+					<form id="coursefilterform" method="get">
 						<!--search-->
 						<div class="sidebar-search">
-							<input id="filter_course_name" class="filter_course" type="text" placeholder="Search Course Name" />
-							<input id="filter_course_name_id"  name="course_name" value="" type="hidden" >
+							<input id="filter_course_name" class="filter_course" type="text" placeholder="Search Course Name" name="course_name_text" value="<?php echo (isset($_GET['course_name_text']) && !empty($_GET['course_name_text'])) ? $_GET['course_name_text']  : '' ;?>"/>
+
+							<input id="filter_course_name_id"  name="course_name" value="<?php echo (isset($_GET['course_name']) && !empty($_GET['course_name'])) ? $_GET['course_name']  : '' ;?>" type="hidden" >
 							<button><i class="fa fa-search"></i></button>
 						</div>
 						<!--category-->
@@ -50,7 +51,8 @@
 							<h3 class="sidebar-title">Categories</h3>
 							<ul class="list-none">
 								@foreach ($categories as $category)
-									<input type="checkbox" class="filter_course" name="category_id[]" value="{{$category->id}}"><label class="labelOwnership">{{$category->name}}</label><br>
+									<input type="checkbox" class="filter_course" name="category_id[]" value="{{$category->id}}" <?php echo (isset($_GET['category_id']) && !empty($_GET['category_id']) && in_array($category->id,$_GET['category_id'])) ? 'checked=checked' : '' ;?>>
+									<label class="labelOwnership">{{$category->name}}</label><br>
 								@endforeach
 							</ul>
 						</div>
@@ -62,47 +64,14 @@
 					<div class="col-xl-7 col-sm-6"></div>
 					<div class="col-xl-5 col-md-6">
 						<div class="site-pagination on-top pull-right">
-							<ul>
-								@if($courses->previousPageUrl() != null)
-									<li><a href="{{$courses->previousPageUrl()}}"><i class="fa fa-long-arrow-left"></i></a></li>
-								@endif
-								<li><a href="#" class="active">{!! $courses->currentPage() !!}</a></li>
-								<li>of</li>
-								<li><a href="#">{!! $courses->lastPage() !!}</a></li>
-								<li><a href="{{$courses->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
-							</ul>
 						</div>
-						<div class="product-view-system pull-right" role="tablist">
-							<ul class="nav nav-tabs">
-								<li><a class="active" data-toggle="tab" href="#grid-courses"><img src="{{asset('FrontDesign/images/icons/icon-grid.png')}}" alt="" /></a></li>
-								<li><a data-toggle="tab" href="#list-courses"><img src="{{asset('FrontDesign/images/icons/icon-list.png')}}" alt="" /></a></li>
-							</ul>
+						<div class="product-results pull-right">
+							<span>Showing {{ $courses->total() }} results</span>
 						</div>
 					</div>
 				</div>
 				<div class="tab-content">
-					<!--single-tab-->
-					<div id="grid-courses" class="tab-pane fade in show active">
-						<div class="row">
-							@foreach($courses as $key => $course)
-								<div class="col-lg-6 col-sm-6 mt-30">
-									<div class="course-single">										
-										<div class="course-info" style="border-top: 1px solid #ebebeb !important;">
-											<div class="course-text mt-10">
-												<h3><a href="{{url('/course/'.$course->slug)}}">{{ $course->name }}</a></h3>
-												<p class="show-read-more">{{ $course->short_description }}</p>
-											</div>
-										</div>
-										<div class="course-meta">
-											<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($course->created_st)->format('d F, Y')}}</a>
-										</div>
-									</div>
-								</div>
-							@endforeach
-						</div>
-					</div>
-					<!--single-tab-->
-					<div id="list-courses" class="tab-pane fade">
+					<div id="list-courses" class="infinite-scroll-course">
 						<div class="row">
 							@foreach($courses as $key => $course)
 								<div class="col-lg-12 mt-30">
@@ -117,32 +86,24 @@
 												<div class="course-meta">
 													<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($course->created_st)->format('d F, Y')}}</a>
 												</div>
-												<p>{{ $course->short_description }}</p>
+												<p>{!!  substr(strip_tags($course->short_description), 0, 150) !!}</p>
 											</div>
 										</div>
 									</div>
 								</div>
 							@endforeach
+							{!! $courses->links("pagination::bootstrap-4") !!}
 						</div>
 					</div>
 				</div>
 				<div class="row align-items-center mt-30">
 					<div class="col-lg-6">
 						<div class="site-pagination">
-							<ul>
-								@if($courses->previousPageUrl() != null)
-									<li><a href="{{$courses->previousPageUrl()}}"><i class="fa fa-long-arrow-left"></i></a></li>
-								@endif
-								<li><a href="#" class="active">{!! $courses->currentPage() !!}</a></li>
-								<li>of</li>
-								<li><a href="#">{!! $courses->lastPage() !!}</a></li>
-								<li><a href="{{$courses->nextPageUrl()}}"><i class="fa fa-long-arrow-right"></i></a></li>
-							</ul>
 						</div>
 					</div>
 					<div class="col-lg-6">
 						<div class="product-results pull-right">
-							<span>Showing {{ $courses->firstItem() }}–{{ $courses->lastItem() }} of {{ $courses->total() }} results</span>
+							<span>Showing {{ $courses->total() }} results</span>
 						</div>
 					</div>
 				</div>
@@ -153,28 +114,22 @@
 <!--course-area end-->
 
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-  
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-
-<!-- Read More and Less for Course Short Description Script Start -->
-<script>
-$(document).ready(function(){
-    var maxLength = 115;
-    $(".show-read-more").each(function(){
-        var myStr = $(this).text();
-        if($.trim(myStr).length > maxLength){
-            var newStr = myStr.substring(0, maxLength);
-            var removedStr = myStr.substring(maxLength, $.trim(myStr).length);
-            $(this).empty().html(newStr);
-            $(this).append(' <a " class="read-more">...</a>');
-            $(this).append('<span class="more-text">' + removedStr + '</span>');
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script src="{{asset('js/scroll.js')}}"></script>
+<script type="text/javascript">
+    $('ul.pagination').hide();
+    $('.infinite-scroll-course').jscroll({
+        autoTrigger: true,
+        debug: true,
+        loadingHtml: '<img class="center-block" src="http://localhost/New_Education/public/FrontDesign/images/1.gif" width="100px" alt="Loading..." />',
+        padding: 0,
+        nextSelector: '.pagination li.active + li a',
+        contentSelector: 'div.infinite-scroll',
+        callback: function() {
+            $('ul.pagination').remove();            
         }
     });
-    $(".read-more").click(function(){
-        $(this).siblings(".more-text").contents().unwrap();
-        $(this).remove();
-    });
-});
 </script>
-<!-- Read More and Less for Course Short Description End-->
 @stop

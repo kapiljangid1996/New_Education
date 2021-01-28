@@ -338,14 +338,16 @@
 		var baseUrl = '{{ URL::to('/') }}';				
 		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
 
+		function college_filter() {
+			var form_data = $( "#collegefilterform :input" ).serialize();
+
+			window.location.href = baseUrl +'/colleges?'+ form_data;
+		}
+
     	function course_filter() {
-    		$('.loader').css("display", "block");
 	    	var course_form_data = $( "#coursefilterform :input" ).serialize();
-			$.post(baseUrl+'/courses', {course_form_data: course_form_data, _token: CSRF_TOKEN}, function(markup)
-	        {
-	            $('.courseView').html(markup);
-	            $('.loader').css("display", "none");
-	        });
+
+			window.location.href = baseUrl +'/courses?'+ course_form_data;
     	}
 	</script>
 	<!-------------------------------------------------------- College Filter Ajax Request End -------------------------------------------------------------- --> 

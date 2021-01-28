@@ -60,53 +60,6 @@ class SearchController extends Controller
     }
     /*---------------------------------------------------------------------------------------------------------------------------------------------*/
 
-    /*--------------------------------------------------------Colleges Filter Page Start ----------------------------------------------------------*/
-
-    public function filterCollegeResult(Request $request)
-    {
-        $colleges= Filter::filterCollege($request);
-        return view('front.collegefilter')->with('colleges',$colleges); 
-    }
-
-    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
-
-    /*------------------------------------------------------- Courses Filter Page Start -----------------------------------------------------------*/
-
-    public function filterCourseResult(Request $request)
-    {
-        $result = $request->all();
-        $course_form_data=  array();
-
-        parse_str($result['course_form_data'], $course_form_data);
-
-        if (!empty($course_form_data['category_id']) && !empty($course_form_data['course_name'])) {
-
-            $course_id1 = Course::whereIn('category_id',$course_form_data['category_id'])->pluck('id'); /* Get Courses Id Accroding to the Category instances*/
-
-            $course_id2 = $course_form_data['course_name']; /* Get Courses Id Accroding to the Name instances*/
-
-            $id = $course_id1->union($course_id1)->union($course_id2);    /* Merge Course ids from Category and name instances */
-
-            $courses = Course::whereIn('id',$id)->paginate(10);   /* Get all the Course Merge Course ids */
-        }
-
-        elseif (!empty($course_form_data['course_name'])) {
-            $courses = Course::where('id',$course_form_data['course_name'])->paginate(10);
-        }
-
-        elseif (!empty($course_form_data['category_id'])) {
-            $courses = Course::whereIn('category_id',$course_form_data['category_id'])->paginate(10);
-        }
-
-        else{
-            $courses = Course::where('status','=',1)->paginate(10); 
-        }
-
-        return view('front.coursefilter')->with('courses',$courses);              
-    }
-
-    /*---------------------------------------------------------------------------------------------------------------------------------------------*/
-
     public function autocompleteCourse(Request $request){
 
         $search = $request->get('term');

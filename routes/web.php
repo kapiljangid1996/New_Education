@@ -25,10 +25,6 @@ Route::get('/colleges', [App\Http\Controllers\HomeController::class, 'collegeVie
 Route::get('/course_name', [App\Http\Controllers\SearchController::class, 'autocompleteCourse'])->name('autocomplete.course'); // Filter College Name
 Route::get('/college_name', [App\Http\Controllers\SearchController::class, 'autocompleteCollege'])->name('autocomplete.college'); // Filter Course Name
 Route::post('/search', [App\Http\Controllers\SearchController::class, 'search'])->name('search'); // Search College and Courses on front page search bar
-
-Route::post('/colleges', [App\Http\Controllers\HomeController::class, 'collegeView']); // Filter College Sidebar
-
-Route::post('/courses', [App\Http\Controllers\SearchController::class, 'filterCourseResult']);	// Filter Course Sidebar
 Route::post('/city_name', [App\Http\Controllers\SearchController::class, 'getCity'])->name('get.city'); // Get City List on college Add and Edit Page
 
 //-----------------------------Searching End--------------------------

@@ -43,8 +43,10 @@
 					<form id="collegefilterform" method="get" action="#">
 						<!--search-->
 						<div class="sidebar-search">
-							<input id="filter_college_name" class="filter_colleges search_college" type="text" placeholder="Search College Name" />
+							<input id="filter_college_name" class="filter_colleges search_college" type="text" placeholder="Search College Name" name="college_name_text" value="<?php echo (isset($_GET['college_name_text']) && !empty($_GET['college_name_text'])) ? $_GET['college_name_text']  : '' ;?>"/>
+
 							<input id="filter_college_name_id"  name="college_name" value="<?php echo (isset($_GET['college_name']) && !empty($_GET['college_name'])) ? $_GET['college_name']  : '' ;?>" type="hidden">
+							
 							<button><i class="fa fa-search"></i></button>
 						</div>
 						<!--location-->
@@ -74,7 +76,7 @@
 
 						</div>
 						<!--Ratings-->
-						<div class="sidebar-category mt-25">
+						<!-- <div class="sidebar-category mt-25">
 							<h3 class="sidebar-title">Ratings</h3>
 							<div class="author-rating">
 								<input type="checkbox" class="filter_colleges rating" name="rating[]" value="5"><i class="fa fa-star labelOwnership"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><i class="fa fa-star"></i><br>
@@ -87,8 +89,7 @@
 
 								<input type="checkbox" class="filter_colleges rating" name="rating[]" value="1"><i class="fa fa-star labelOwnership"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
 							</div>
-						</div>
-						<button class="btn btn-secondary">Submit</button>
+						</div> -->
 					</form>
 				</div>
 			</div>
@@ -167,31 +168,4 @@
         }
     });
 </script>
-
-<!-------------------------------------------------------- College Sidebar Filters Script Start --------------------------------------------------------- -->
-<script>
-	$(document).ready(function(){
-		$(window).load(function(){
-			//college_filter();
-		});
-	});
-</script>
-<!-------------------------------------------------------- College Sidebar Filters Script End --------------------------------------------------------- -->
-
-<script>
-		var baseUrl = '{{ URL::to('/') }}';				
-		var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-    	function college_filter() {
-			var form_data = $( "#collegefilterform :input" ).serialize();
-
-			window.location.href = baseUrl +'/colleges?'+ form_data;
-
-			/*$.post(baseUrl+'/colleges', {form_data: form_data, _token: CSRF_TOKEN}, function(markup)
-	        {
-	            $('#collegeView').html(markup);
-	            $('.loader').css("display", "none");
-	        });*/ 
-    	}
-	</script>
 @stop
