@@ -42,7 +42,6 @@
 	<link rel="stylesheet" href="{{asset('FrontDesign/css/style.css')}}">
 	<!-- responsive css -->
 	<link rel="stylesheet" href="{{asset('FrontDesign/css/responsive.css')}}">
-	<link rel="stylesheet" href="{{asset('css/star.css')}}">
 	<link rel="stylesheet" href="{{asset('css/extra.css')}}">
 </head>
 

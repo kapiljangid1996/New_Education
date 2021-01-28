@@ -5,6 +5,8 @@
 @stop
 
 @section('content')
+
+<link rel="stylesheet" href="{{asset('css/star.css')}}">
 <!--page-banner-area start-->
 <div class="page-banner height-200 bg-1">
 	<div class="d-table">
