@@ -93,12 +93,22 @@
 					<div class="footer-widget mt-30">
 						<h3>Our Gallery</h3>
 						<div class="footer-gallery mt-20">
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/1.jpg')}}" alt="" /></a>
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/2.jpg')}}" alt="" /></a>
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/3.jpg')}}" alt="" /></a>
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/4.jpg')}}" alt="" /></a>
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/5.jpg')}}" alt="" /></a>
-							<a href="#"><img src="{{asset('FrontDesign/images/gallery/6.jpg')}}" alt="" /></a>
+							<form method="post" action="{{route('newsletter.store')}}">
+						        @csrf
+							 <div class="row">
+							 <div class="col-md-4"></div>
+							 <div class="form-group col-md-2">
+							   <label for="Email">Email:</label>
+							   <input type="text" class="form-control" name="email" style="width: 300px;">
+							 </div>
+							 </div>   
+							 <div class="row">
+							 <div class="col-md-4"></div>
+							 <div class="form-group col-md-4">
+							 <button type="submit" class="btn btn-success">Submit</button>
+							 </div>
+							 </div>
+						    </form>
 						</div>
 					</div>
 				</div>

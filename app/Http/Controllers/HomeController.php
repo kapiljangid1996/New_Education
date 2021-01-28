@@ -10,6 +10,7 @@ use App\Models\College\College;
 use App\Models\City;
 use App\Models\Rating;
 use App\Models\Filter;
+use Newsletter;
 use DB;
 
 class HomeController extends Controller
@@ -45,5 +46,16 @@ class HomeController extends Controller
         $courses = Course::where('status','=',1)->get();
         $exams = Exam::where('status','=',1)->get();
         return view('front.collegeDetail')->with('colleges',$colleges)->with('courses',$courses)->with('exams',$exams);
-    }    
+    }
+
+    public function newsLetter(Request $request)
+        {
+          if ( ! Newsletter::isSubscribed($request->email) ) 
+        {
+            Newsletter::subscribePending($request->email);
+            return redirect('newsletter')->with('success', 'Thanks For Subscribe');
+        }
+        return redirect('newsletter')->with('error', 'Sorry! You have already subscribed ');
+        
+        }    
 }
