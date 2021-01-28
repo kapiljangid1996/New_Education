@@ -49,13 +49,14 @@ class HomeController extends Controller
     }
 
     public function newsLetter(Request $request)
-        {
-          if ( ! Newsletter::isSubscribed($request->email) ) 
+    {
+        Newsletter::unsubscribe($request->email);
+        if ( ! Newsletter::isSubscribed($request->email) ) 
         {
             Newsletter::subscribePending($request->email);
-            return redirect('newsletter')->with('success', 'Thanks For Subscribe');
+            return redirect()->back()->with('success', 'Thanks For Subscribe');
         }
-        return redirect('newsletter')->with('error', 'Sorry! You have already subscribed ');
+        return redirect()->back()->with('toast_error', 'Sorry! You have already subscribed ');
         
-        }    
+    }    
 }

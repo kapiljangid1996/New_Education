@@ -95,19 +95,17 @@
 						<div class="footer-gallery mt-20">
 							<form method="post" action="{{route('newsletter.store')}}">
 						        @csrf
-							 <div class="row">
-							 <div class="col-md-4"></div>
-							 <div class="form-group col-md-2">
-							   <label for="Email">Email:</label>
-							   <input type="text" class="form-control" name="email" style="width: 300px;">
-							 </div>
-							 </div>   
-							 <div class="row">
-							 <div class="col-md-4"></div>
-							 <div class="form-group col-md-4">
-							 <button type="submit" class="btn btn-success">Submit</button>
-							 </div>
-							 </div>
+							 	<div class="row">
+						 			<div class="form-group col-md-2">
+						   				<label for="Email">Email:</label>
+						   				<input type="text" class="form-control" name="email" style="width: 300px;">
+						 			</div>
+							 	</div>   
+							 	<div class="row">
+							 		<div class="form-group col-md-4">
+							 			<button type="submit" class="btn btn-success">Submit</button>
+							 		</div>
+							 	</div>
 						    </form>
 						</div>
 					</div>
