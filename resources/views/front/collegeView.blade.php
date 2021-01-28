@@ -53,15 +53,19 @@
 						<div class="sidebar-category mt-35">
 							<h3 class="sidebar-title">Location</h3>
 							<div class="sidebar-search">
-								<input type="text" placeholder="Search Location" />
+								<input type="text" placeholder="Search Location" id="searchText" />
 								<button><i class="fa fa-search"></i></button>
 							</div>
 							<br>
 							<div style="overflow-y: scroll; height:250px;">
-								@foreach($cities as $city_value)
-									<input type="checkbox" class="filter_colleges" name="city[]" value="{{ $city_value->city_name ? $city_value->city_name->id : ''}}" <?php echo (isset($_GET['city']) && !empty($_GET['city']) && in_array($city_value->city_name->id,$_GET['city'])) ? 'checked=checked' : '' ;?> >
-									<label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} ({{ $city_value['total']}})</label><br>
-								@endforeach
+								<ul style="list-style-type:none; padding-left: 0px; margin-top: 0px;" id="ulVal">
+									@foreach($cities as $city_value)
+										<li>
+											<input type="checkbox" class="filter_colleges" name="city[]" value="{{ $city_value->city_name ? $city_value->city_name->id : ''}}" <?php echo (isset($_GET['city']) && !empty($_GET['city']) && in_array($city_value->city_name->id,$_GET['city'])) ? 'checked=checked' : '' ;?> city_name="{{ $city_value->city_name ? $city_value->city_name->name : ''}}"> 
+											<label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} ({{ $city_value['total']}})</label>
+										</li>
+									@endforeach
+								</ul>
 							</div>							
 						</div>
 						<!--category-->
@@ -167,5 +171,21 @@
             $('ul.pagination').remove();            
         }
     });
+</script>
+
+<script>
+$("document").ready(function () {
+    $("#searchText").on("keyup", function (e) {
+        var input  = $(this).val();        
+        $("#ulVal input[type=checkbox]").each(function (index, element) {
+            var regex = new RegExp($.trim(input), "gi");
+            if($(element).attr('city_name').match(regex) !== null) {
+                $(element).parent().show();
+            } else {
+                $(element).parent().hide();
+            }
+        });
+    });
+});
 </script>
 @stop
