@@ -6,7 +6,7 @@
     'aliases' => 
     array (
     ),
-    'reference' => '81c290bc49cd0d3bf33713f92f7da2b600edb54e',
+    'reference' => '46fe80e1d00e4930895d3eeaf1f554be5fdfb278',
     'name' => 'laravel/laravel',
   ),
   'versions' => 
@@ -87,6 +87,15 @@
       array (
       ),
       'reference' => '7a8c6e56ab3ffcc538d05e8155bb42269abf1a0c',
+    ),
+    'drewm/mailchimp-api' => 
+    array (
+      'pretty_version' => 'v2.5.4',
+      'version' => '2.5.4.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => 'c6cdfab4ca6ddbc3b260913470bd0a4a5cb84c7a',
     ),
     'egulias/email-validator' => 
     array (
@@ -454,7 +463,7 @@
       'aliases' => 
       array (
       ),
-      'reference' => '81c290bc49cd0d3bf33713f92f7da2b600edb54e',
+      'reference' => '46fe80e1d00e4930895d3eeaf1f554be5fdfb278',
     ),
     'laravel/sail' => 
     array (
@@ -986,6 +995,15 @@
       array (
       ),
       'reference' => 'c6c1022351a901512170118436c764e473f6de8c',
+    ),
+    'spatie/laravel-newsletter' => 
+    array (
+      'pretty_version' => '4.9.0',
+      'version' => '4.9.0.0',
+      'aliases' => 
+      array (
+      ),
+      'reference' => '659893001e73b5ea5b9b6dd73a06a8574ea735a7',
     ),
     'swiftmailer/swiftmailer' => 
     array (

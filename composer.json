@@ -17,6 +17,7 @@
         "laravel/tinker": "^2.5",
         "realrashid/sweet-alert": "^3.2",
         "rogervila/laravel-legacy-ui": "^3.1",
+        "spatie/laravel-newsletter": "^4.9",
         "tinify/tinify": "^1.5"
     },
     "require-dev": {
