@@ -9,6 +9,7 @@ use App\Models\State;
 use App\Models\Course\Course;
 use App\Models\Exam\Exam;
 use App\Models\College\College;
+use App\Models\College\College_Category;
 use App\Models\College\CourseFee;
 use App\Models\College\Admission;
 use App\Models\College\Placement;
@@ -26,7 +27,7 @@ class CollegesController extends Controller
 
     public function index()
     {
-    	$colleges = College::with('category')->orderBy('id', 'desc')->get();
+    	$colleges = College::orderBy('id', 'desc')->get();
         return view('admin.college.index')->with('colleges',$colleges);
     }
 
@@ -45,7 +46,7 @@ class CollegesController extends Controller
 
     public function edit($id)
     {
-        $colleges = College::with('category')->find($id);
+        $colleges = College::with('category_list')->find($id);
         $state_list = State::all();
         $categories = Category::with('children')->whereNull('parent_id')->get();
         return view('admin.college.edit')->with('categories',$categories)->with('colleges',$colleges)->with('state_list',$state_list);
@@ -59,6 +60,7 @@ class CollegesController extends Controller
 
     public function destroy($id)
     {
+        College_Category::where('college_id',$id)->delete();
         CourseFee::where('college_id',$id)->delete();
         Admission::where('college_id',$id)->delete();
         Placement::where('college_id',$id)->delete();

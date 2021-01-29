@@ -13,12 +13,7 @@ class College extends Model
 
     protected $table = 'colleges';
 
-    protected $fillable = ['name','slug','ownership','state','city','street','post_code','contact1','contact2','email1','email2','website','long_description','short_description','image','logo','meta_name','meta_description','meta_keyword','status','sort_order'];
-
-    public function category()
-    {
-    	return $this->belongsTo('App\Models\Category');
-    }
+    protected $fillable = ['name','slug','ownership','state','city','street','post_code','contact1','contact2','email1','email2','website','long_description','short_description','image','logo','avg_rating','meta_name','meta_description','meta_keyword','status','sort_order'];
 
     public function state_name()
     {
@@ -65,6 +60,11 @@ class College extends Model
         return $this->hasMany('App\Models\Rating');
     }
 
+    public function category_list()
+    {
+        return $this->hasMany('App\Models\College\College_Category');
+    }
+
     public static function storeCollege($request)
     {
     	$request->validate([
@@ -76,8 +76,8 @@ class College extends Model
             'street'  => 'required|min:3',
             'post_code'  => 'required|numeric',
             'contact1'  => 'required',
-            'email1'  => 'required|email|string',
-            'website'  => 'required|string',
+            'email1'  => 'email|string',
+            'website'  => 'string',
             'long_description'  => 'required|min:3',
             'short_description'  => 'required|min:3',
             'image'  => 'required',
@@ -102,6 +102,11 @@ class College extends Model
         $colleges -> website = request('website');
         $colleges -> long_description = request('long_description');
         $colleges -> short_description = request('short_description');
+        $colleges -> avg_rating = request('avg_rating');
+        $colleges -> academic_rating = request('academic_rating');
+        $colleges -> fee_rating = request('fee_rating');
+        $colleges -> placement_rating = request('placement_rating');
+        $colleges -> infrastructure_rating = request('infrastructure_rating');
         $colleges -> meta_name = request('meta_name');
         $colleges -> meta_description = request('meta_description');
         $colleges -> meta_keyword = request('meta_keyword');
@@ -141,7 +146,18 @@ class College extends Model
             }
         }
 
-        $colleges->save();
+        $colleges->save();                
+
+        $lastInsertedId= $colleges->id;
+
+        if (!empty($category_id=$request->input('category_id'))){
+            foreach($category_id as $id_category){
+                $college_categories = new College_Category();
+                $college_categories -> category_id = $id_category; 
+                $college_categories -> college_id = $lastInsertedId; 
+                $college_categories->save(); 
+            }
+        }
     }
 
     public static function editCollege($request,$id)
@@ -179,6 +195,11 @@ class College extends Model
         $colleges -> website = $request->input('website');
         $colleges -> long_description = $request->input('long_description');
         $colleges -> short_description = $request->input('short_description');
+        $colleges -> avg_rating = $request->input('avg_rating');
+        $colleges -> academic_rating = $request->input('academic_rating');
+        $colleges -> fee_rating = $request->input('fee_rating');
+        $colleges -> placement_rating = $request->input('placement_rating');
+        $colleges -> infrastructure_rating = $request->input('infrastructure_rating');
         $colleges -> meta_name = $request->input('meta_name');
         $colleges -> meta_description = $request->input('meta_description');
         $colleges -> meta_keyword = $request->input('meta_keyword');
@@ -242,5 +263,18 @@ class College extends Model
         }
 
         $colleges->save();
+
+        $id_college = $request->input('id_college');
+
+        College_Category::where('college_id',$id_college)->delete();
+
+        if (!empty($category_id=$request->input('category_id'))){
+            foreach($category_id as $id_category){
+                $college_categories = new College_Category();
+                $college_categories -> category_id = $id_category; 
+                $college_categories -> college_id = $request->input('id_college'); 
+                $college_categories->save(); 
+            }
+        }
     }    
 }

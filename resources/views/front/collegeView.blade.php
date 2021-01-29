@@ -79,6 +79,21 @@
 							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Public Private" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Public Private',$_GET['ownership'])) ? 'checked=checked' : '' ;?>><label class="labelOwnership"> Public Private </label>
 
 						</div>
+						<!--price filter-->
+						<div class="price_filter mt-40">
+							<h3 class="sidebar-title">Fee</h3>
+							<div class="price_slider_amount">
+								<div class="row align-items-center">
+									<div class="col-lg-6">
+										<input type="text" id="amount" name="price"  placeholder="Add Your Price" />
+									</div>
+									<div class="col-lg-6">
+										<button>Filter</button>
+									</div>
+								</div>
+							</div>
+							<div id="slider-fee"></div>
+						</div>
 						<!--Ratings-->
 						<!-- <div class="sidebar-category mt-25">
 							<h3 class="sidebar-title">Ratings</h3>
@@ -186,6 +201,22 @@ $("document").ready(function () {
             }
         });
     });
+});
+</script>
+
+<script>
+$("document").ready(function () {alert('hello');
+    $( "#slider-fee" ).slider({
+		range: true,
+		min: 1,
+		max: 10,
+		values: [ 2, 5 ],
+		slide: function( event, ui ) {
+			$( "#amount" ).val(ui.values[ 0 ] + " L" + " - " + ui.values[ 1 ] + " L");
+		}
+	});
+	$( "#amount" ).val($( "#slider-fee" ).slider( "values", 0 ) + " L" +
+		" - " + $( "#slider-fee" ).slider( "values", 1 ) + " L");
 });
 </script>
 @stop

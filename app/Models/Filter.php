@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\College\College;
+use App\Models\College\CourseFee;
 use App\Models\Course\Course;
 
 class Filter extends Model
@@ -12,7 +13,6 @@ class Filter extends Model
 	use HasFactory;
 
 	public static function filterCollege($request){
-
         if (!empty($request->all())) {
             if (isset($request->page)) {
                 if($request->session()->has('form_data')){
@@ -67,6 +67,14 @@ class Filter extends Model
             $query = College::whereIn('ownership',$form_data['ownership'])->whereIn('id',$data);   
         }
 
+        elseif (!empty($form_data['college_name'])) {
+            $query = College::where('id',$form_data['college_name']);
+        }
+
+        elseif (!empty($form_data['city'])){
+            $query = College::whereIn('city',$form_data['city']);
+        }
+
         elseif (!empty($form_data['ownership'])){
             $query = College::whereIn('ownership',$form_data['ownership']);
         }
@@ -82,12 +90,10 @@ class Filter extends Model
             $query = College::whereIn('id',$data);
         }
 
-        elseif (!empty($form_data['college_name'])) {
-            $query = College::where('id',$form_data['college_name']);
-        }
+        elseif (!empty($form_data['price'])){
+            $arr = explode(" - ", $form_data['price']);
 
-        elseif (!empty($form_data['city'])){
-            $query = College::whereIn('city',$form_data['city']);
+            $query = College::whereIn('id',$data);
         }
 
         else{

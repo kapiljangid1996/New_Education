@@ -42,6 +42,18 @@
 						</div>
 					</div>
 					<div class="form-group row">
+						<label for="category_id" class="col-sm-2 col-form-label">Category</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="category_id[]" multiple="">
+								<option value="">Chooose Category</option>
+								@foreach ($categories as $category)
+									<option value="{{ $category->id }}" @foreach ($colleges->category_list as $cat) {{ $category->id === $cat->category_id ? 'selected' : '' }}  @endforeach>{{ $category->name }}</option>
+								@endforeach
+							</select>
+							{!! $errors->first('category_id', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
 						<label for="ownership" class="col-sm-2 col-form-label">Ownership</label>
 						<div class="col-sm-10">
 							<select class="form-control" name="ownership" required>
@@ -171,6 +183,41 @@
 						</div>
 					</div>
 					<div class="form-group row">
+						<label for="avg_rating" class="col-sm-2 col-form-label">Average Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="avg_rating" value="{{$colleges->avg_rating}}">
+							{!! $errors->first('avg_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="academic_rating" class="col-sm-2 col-form-label">Academic Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="academic_rating" value="{{$colleges->academic_rating}}">
+							{!! $errors->first('academic_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fee_rating" class="col-sm-2 col-form-label">Fee Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="fee_rating" value="{{$colleges->fee_rating}}">
+							{!! $errors->first('fee_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="placement_rating" class="col-sm-2 col-form-label">Placement Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="placement_rating" value="{{$colleges->placement_rating}}">
+							{!! $errors->first('placement_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="infrastructure_rating" class="col-sm-2 col-form-label">Infrastructure Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="infrastructure_rating" value="{{$colleges->infrastructure_rating}}">
+							{!! $errors->first('infrastructure_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
 						<label for="meta_name" class="col-sm-2 col-form-label">Meta Name</label>
 						<div class="col-sm-10">
 							<input type="text" class="form-control" name="meta_name" value="{{$colleges->meta_name}}">
@@ -198,6 +245,7 @@
 							<input type="checkbox" name="status" value="1" style="margin-top: 7px" @if(old('status', $colleges->status)) checked @endif>
 						</div>
 					</div>
+					<input type="hidden" value="{{$colleges->id}}" name="id_college">
 					<div class="form-group mb-2">
 						<button type="submit" class="btn btn-primary">Edit</button>
 					</div>

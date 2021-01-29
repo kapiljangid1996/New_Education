@@ -29,21 +29,33 @@
 					<div class="form-group row">
 						<label for="name" class="col-sm-2 col-form-label">Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="name" value="{{old('name')}}"  name="name" required>
+							<input type="text" class="form-control" id="name" value="{{old('name')}}"  name="name">
 							{!! $errors->first('name', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="slug" class="col-sm-2 col-form-label">Slug</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" id="slug" value="{{old('slug')}}" name="slug" required>
+							<input type="text" class="form-control" id="slug" value="{{old('slug')}}" name="slug">
+							{!! $errors->first('slug', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="category_id" class="col-sm-2 col-form-label">Category</label>
+						<div class="col-sm-10">
+							<select class="form-control" name="category_id[]" multiple="">
+								<option value="">Choose Category</option>
+								@foreach ($categories as $category)
+									<option value="{{ $category->id }}">{{ $category->name }}</option>
+								@endforeach
+							</select>
 							{!! $errors->first('slug', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="ownership" class="col-sm-2 col-form-label">Ownership</label>
 						<div class="col-sm-10">
-							<select class="form-control" name="ownership" required>
+							<select class="form-control" name="ownership">
 								<option value="">Choose Ownership</option>
 								<option value="Private" @if (old('ownership') == "Private") {{ 'selected' }} @endif>Private</option>
                                 <option value="Public / Government" @if (old('ownership') == "Public / Government") {{ 'selected' }} @endif>Public / Government</option>
@@ -55,13 +67,13 @@
 					<div class="form-group row">
 						<label for="location" class="col-sm-2 col-form-label">Location</label>
 						<div class="col-sm-10">
-							<select name ="state" class="form-control" id="state_id" required>
+							<select name ="state" class="form-control" id="state_id">
 								<option>Select State</option>
 								@foreach($state_list as $states)
 									<option value="{{$states->id}}">{{$states->name}}</option>
 								@endforeach
 							</select><br>
-							<select class="form-control" id="city_name" name="city" required></select>
+							<select class="form-control" id="city_name" name="city"></select>
 							{!! $errors->first('state', '<small class="text-danger">:message</small>') !!}
 							{!! $errors->first('city', '<small class="text-danger">:message</small>') !!}
 						</div>
@@ -69,21 +81,21 @@
 					<div class="form-group row">
 						<label for="street" class="col-sm-2 col-form-label">Street</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="street" required>{{ old('street') }}</textarea>
+							<textarea class="form-control" name="street">{{ old('street') }}</textarea>
 							{!! $errors->first('street', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="post_code" class="col-sm-2 col-form-label">Post Code</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="post_code" value="{{old('post_code')}}" required>
+							<input type="text" class="form-control" name="post_code" value="{{old('post_code')}}">
 							{!! $errors->first('post_code', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="contact1" class="col-sm-2 col-form-label">Contact 1</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="contact1" value="{{old('contact1')}}" required>
+							<input type="text" class="form-control" name="contact1" value="{{old('contact1')}}">
 							{!! $errors->first('contact1', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
@@ -97,7 +109,7 @@
 					<div class="form-group row">
 						<label for="email1" class="col-sm-2 col-form-label">Email 1</label>
 						<div class="col-sm-10">
-							<input type="email" class="form-control" name="email1" value="{{old('email1')}}" required>
+							<input type="email" class="form-control" name="email1" value="{{old('email1')}}">
 							{!! $errors->first('email1', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
@@ -111,56 +123,91 @@
 					<div class="form-group row">
 						<label for="website" class="col-sm-2 col-form-label">Website</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="website" value="{{old('website')}}" required>
+							<input type="text" class="form-control" name="website" value="{{old('website')}}">
 							{!! $errors->first('website', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="long_description" class="col-sm-2 col-form-label">Description</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="long_description" required>{{ old('long_description') }}</textarea>
+							<textarea class="form-control" name="long_description">{{ old('long_description') }}</textarea>
 							{!! $errors->first('long_description', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="short_description" class="col-sm-2 col-form-label">Short Description</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="short_description" rows="3" required>{{ old('short_description') }}</textarea>
+							<textarea class="form-control" name="short_description" rows="3">{{ old('short_description') }}</textarea>
 							{!! $errors->first('short_description', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="image" class="col-sm-2 col-form-label">Image</label>
 						<div class="col-sm-10">
-							<input type="file" name="image" class="form-control" required>
+							<input type="file" name="image" class="form-control">
 							{!! $errors->first('image', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="logo" class="col-sm-2 col-form-label">Logo</label>
 						<div class="col-sm-10">
-							<input type="file" name="logo" class="form-control" required>
+							<input type="file" name="logo" class="form-control">
 							{!! $errors->first('logo', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="avg_rating" class="col-sm-2 col-form-label">Average Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="avg_rating" value="{{old('avg_rating')}}">
+							{!! $errors->first('avg_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="academic_rating" class="col-sm-2 col-form-label">Academic Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="academic_rating" value="{{old('academic_rating')}}">
+							{!! $errors->first('academic_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="fee_rating" class="col-sm-2 col-form-label">Fee Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="fee_rating" value="{{old('fee_rating')}}">
+							{!! $errors->first('fee_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="placement_rating" class="col-sm-2 col-form-label">Placement Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="placement_rating" value="{{old('placement_rating')}}">
+							{!! $errors->first('placement_rating', '<small class="text-danger">:message</small>') !!}
+						</div>
+					</div>
+					<div class="form-group row">
+						<label for="infrastructure_rating" class="col-sm-2 col-form-label">Infrastructure Rating</label>
+						<div class="col-sm-10">
+							<input type="text" class="form-control" name="infrastructure_rating" value="{{old('infrastructure_rating')}}">
+							{!! $errors->first('infrastructure_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="meta_name" class="col-sm-2 col-form-label">Meta Name</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="meta_name" value="{{old('meta_name')}}" required>
+							<input type="text" class="form-control" name="meta_name" value="{{old('meta_name')}}">
 							{!! $errors->first('meta_name', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="meta_keyword" class="col-sm-2 col-form-label">Meta Keyword</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="meta_keyword" rows="3" required>{{ old('meta_keyword') }}</textarea>
+							<textarea class="form-control" name="meta_keyword" rows="3">{{ old('meta_keyword') }}</textarea>
 							{!! $errors->first('meta_keyword', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="meta_description" class="col-sm-2 col-form-label">Meta Description</label>
 						<div class="col-sm-10">
-							<textarea class="form-control" name="meta_description" rows="3" required>{{ old('meta_description') }}</textarea>
+							<textarea class="form-control" name="meta_description" rows="3">{{ old('meta_description') }}</textarea>
 							{!! $errors->first('meta_description', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
