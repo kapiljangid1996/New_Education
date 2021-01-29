@@ -44,7 +44,7 @@
 						<label for="category_id" class="col-sm-2 col-form-label">Category</label>
 						<div class="col-sm-10">
 							<select class="form-control" name="category_id[]" multiple="">
-								<option value="">Choose Category</option>
+								<option value="" disabled>Choose Category</option>
 								@foreach ($categories as $category)
 									<option value="{{ $category->id }}">{{ $category->name }}</option>
 								@endforeach
@@ -56,7 +56,7 @@
 						<label for="ownership" class="col-sm-2 col-form-label">Ownership</label>
 						<div class="col-sm-10">
 							<select class="form-control" name="ownership">
-								<option value="">Choose Ownership</option>
+								<option value="" disabled>Choose Ownership</option>
 								<option value="Private" @if (old('ownership') == "Private") {{ 'selected' }} @endif>Private</option>
                                 <option value="Public / Government" @if (old('ownership') == "Public / Government") {{ 'selected' }} @endif>Public / Government</option>
 								<option value="Public Private" @if (old('ownership') == "Public Private") {{ 'selected' }} @endif>Public Private</option>
