@@ -54,13 +54,17 @@
 							</li>
 							<li>
 								<a href="#">Review</a>
+								@php $i = $colleges[0]->avg_rating; @endphp
 								<div class="author-rating">
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star"></i>
-									<i class="fa fa-star-half-o"></i>
-									<span>(4.5 Rate)</span>
+									@while($i>0)
+										@if($i >0.5)
+											<i class="fa fa-star" style="color: orange"></i>
+										@else
+											<i class="fa fa-star-half" style="color: orange"></i>
+										@endif
+										@php $i--; @endphp
+									@endwhile
+									<span>({{$colleges[0]->avg_rating}})</span>
 								</div>
 							</li>
 						</ul>

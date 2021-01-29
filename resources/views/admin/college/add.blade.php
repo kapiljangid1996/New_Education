@@ -158,35 +158,35 @@
 					<div class="form-group row">
 						<label for="avg_rating" class="col-sm-2 col-form-label">Average Rating</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="avg_rating" value="{{old('avg_rating')}}">
+							<input type="number" class="form-control" name="avg_rating" step="0.5" max="5" value="{{old('avg_rating')}}">
 							{!! $errors->first('avg_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="academic_rating" class="col-sm-2 col-form-label">Academic Rating</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="academic_rating" value="{{old('academic_rating')}}">
+							<input type="number" class="form-control" name="academic_rating" step="0.5" max="5" value="{{old('academic_rating')}}">
 							{!! $errors->first('academic_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="fee_rating" class="col-sm-2 col-form-label">Fee Rating</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="fee_rating" value="{{old('fee_rating')}}">
+							<input type="number" class="form-control" name="fee_rating" step="0.5" max="5" value="{{old('fee_rating')}}">
 							{!! $errors->first('fee_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="placement_rating" class="col-sm-2 col-form-label">Placement Rating</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="placement_rating" value="{{old('placement_rating')}}">
+							<input type="number" class="form-control" name="placement_rating" step="0.5" max="5" value="{{old('placement_rating')}}">
 							{!! $errors->first('placement_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
 					<div class="form-group row">
 						<label for="infrastructure_rating" class="col-sm-2 col-form-label">Infrastructure Rating</label>
 						<div class="col-sm-10">
-							<input type="text" class="form-control" name="infrastructure_rating" value="{{old('infrastructure_rating')}}">
+							<input type="number" class="form-control" name="infrastructure_rating" step="0.5" max="5" value="{{old('infrastructure_rating')}}">
 							{!! $errors->first('infrastructure_rating', '<small class="text-danger">:message</small>') !!}
 						</div>
 					</div>
