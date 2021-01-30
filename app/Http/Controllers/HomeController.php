@@ -10,6 +10,7 @@ use App\Models\College\College;
 use App\Models\City;
 use App\Models\Rating;
 use App\Models\Filter;
+use App\Models\Slider;
 use Newsletter;
 use DB;
 
@@ -17,8 +18,8 @@ class HomeController extends Controller
 {
     public function index()
     {
-        $courses = Course::where('status','=',1)->get(); // Get all Course List on fornt page
-        return view('front.index')->with('courses',$courses);
+        $sliders = Slider::where('status',1)->get();
+        return view('front.index')->with('sliders',$sliders);
     }
 
     public function courseView(Request $request)
