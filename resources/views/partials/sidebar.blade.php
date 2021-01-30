@@ -66,7 +66,7 @@
 				</a>
 			</li>-->
 			<li class="nav-item w-100">
-				<a class="nav-link" href="{{url('/admin/contact')}}">
+				<a class="nav-link" href="{{url('/admin/contact-list')}}">
 					<i class="fe fe-phone fe-16"></i>
 					<span class="ml-3 item-text">Contact</span>
 				</a>
