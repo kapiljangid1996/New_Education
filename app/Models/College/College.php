@@ -67,6 +67,7 @@ class College extends Model
 
     public static function storeCollege($request)
     {
+        //echo '<pre>';print_r($request->all());die;
     	$request->validate([
             'name'  => 'required|min:3|max:255|string',
             'slug'  => 'required|unique:colleges,slug',
@@ -111,6 +112,7 @@ class College extends Model
         $colleges -> meta_description = request('meta_description');
         $colleges -> meta_keyword = request('meta_keyword');
         $colleges -> status = request('status');
+        $colleges -> featured_colleges = (isset($request['featured_colleges']))?1:0;
 
         if (request()->hasfile('image'))
         {
@@ -204,6 +206,7 @@ class College extends Model
         $colleges -> meta_description = $request->input('meta_description');
         $colleges -> meta_keyword = $request->input('meta_keyword');
         $colleges -> status = $request->input('status');
+        $colleges -> featured_colleges = (isset($request['featured_colleges']))?1:0;
         $old_image = $request->input('old_image');
         $old_logo = $request->input('old_logo');
 
