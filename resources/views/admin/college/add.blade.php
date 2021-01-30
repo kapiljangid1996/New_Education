@@ -218,6 +218,12 @@
 							<input type="checkbox" name="status" checked="" value="1" style="margin-top: 7px">
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="status" class="col-sm-2 col-form-label">Featured college</label>
+						<div class="col-sm-10">
+							<input type="checkbox" name="featured_colleges" value="1"  style="margin-top: 7px">
+						</div>
+					</div>
 					<div class="form-group mb-2">
 						<button type="submit" class="btn btn-primary">Add</button>
 					</div>

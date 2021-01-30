@@ -246,6 +246,12 @@
 							<input type="checkbox" name="status" value="1" style="margin-top: 7px" @if(old('status', $colleges->status)) checked @endif>
 						</div>
 					</div>
+					<div class="form-group row">
+						<label for="status" class="col-sm-2 col-form-label">Featured college</label>
+						<div class="col-sm-10">
+							<input type="checkbox" name="featured_colleges" value="1" style="margin-top: 7px" @if(old('featured_colleges', $colleges->featured_colleges)) checked @endif>
+						</div>
+					</div>
 					<input type="hidden" value="{{$colleges->id}}" name="id_college">
 					<div class="form-group mb-2">
 						<button type="submit" class="btn btn-primary">Edit</button>
