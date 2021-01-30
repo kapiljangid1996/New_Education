@@ -19,6 +19,8 @@ use RealRashid\SweetAlert\Facades\Alert;
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 Route::get('/courses', [App\Http\Controllers\HomeController::class, 'courseView']);
 Route::get('/colleges', [App\Http\Controllers\HomeController::class, 'collegeView']);
+Route::get('/contact-us', [App\Http\Controllers\PageController::class, 'contact']);
+Route::post('/contact-us', [App\Http\Controllers\PageController::class, 'saveContact'])->name('contact.submit');
 Route::post('newsletter', [App\Http\Controllers\HomeController::class, 'newsLetter'])->name('newsletter.store');
 
 //-----------------------------Searching--------------------------
