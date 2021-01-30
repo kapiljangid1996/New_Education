@@ -16,7 +16,7 @@ $('#mobile-menu').mmenu();
 /*---------------------
 menu-stick
 --------------------- */
-var s = $("#sticker");
+/*var s = $("#sticker");
 var pos = s.position();					   
 $(window).on('scroll',function() {
 	var windowpos = $(window).scrollTop();
@@ -25,7 +25,7 @@ $(window).on('scroll',function() {
 	} else {
 		s.removeClass("stick");	
 	}
-});
+});*/
 /*--------------------------
  cart dropdown
 ---------------------------- */	

@@ -5,7 +5,7 @@
 			<div class="row">
 				<div class="col-lg-3 col-sm-6">
 					<div class="company-info">
-						<img src="{{asset('Uploads/Site/').'/'.$settings->logo}}" alt="logo" />
+						<img src="{{asset('Uploads/Site/150x100').'/'.$settings->logo}}" alt="logo" />
 						<ul class="list-none">
 							<li>
 								<span>Email:</span>

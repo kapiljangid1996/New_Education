@@ -222,10 +222,10 @@
 				</div>
 
 				<!--rating-box-->
-				<h3>Review and Rating</h3>
-				<div class="rating-box mt-25">
-					<div class="row">
-						<div class="col-lg-3">
+				<!-- <h3>Review and Rating</h3> -->
+				<!-- <div class="rating-box mt-25"> -->
+					<!-- <div class="row"> -->
+						<!-- <div class="col-lg-3">
 							<div class="rating-number d-table">
 								<div class="vertical-middle">
 									<h5>4.0</h5>
@@ -237,10 +237,10 @@
 									<p>Average Rating</p>
 								</div>
 							</div>
-						</div>
-						<div class="col-lg-9 mt-sm-40">
+						</div> -->
+						<!-- <div class="col-lg-9 mt-sm-40"> -->
 							<!--rating-line-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-xl-2 col-lg-3 col-4">
 									<strong>5 stars</strong>
 								</div>
@@ -256,9 +256,9 @@
 								<div class="col-xl-2 col-lg-2 col-2">
 									<span>1</span>
 								</div>
-							</div>
+							</div> -->
 							<!--rating-line-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-xl-2 col-lg-3 col-4">
 									<strong>4 stars</strong>
 								</div>
@@ -274,9 +274,9 @@
 								<div class="col-xl-2 col-lg-2 col-2">
 									<span>1</span>
 								</div>
-							</div>
+							</div> -->
 							<!--rating-line-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-xl-2 col-lg-3 col-4">
 									<strong>3 stars</strong>
 								</div>
@@ -292,9 +292,9 @@
 								<div class="col-xl-2 col-lg-2 col-2">
 									<span>1</span>
 								</div>
-							</div>
+							</div> -->
 							<!--rating-line-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-xl-2 col-lg-3 col-4">
 									<strong>2 stars</strong>
 								</div>
@@ -310,9 +310,9 @@
 								<div class="col-xl-2 col-lg-2 col-2">
 									<span>0</span>
 								</div>
-							</div>
+							</div> -->
 							<!--rating-line-->
-							<div class="row">
+							<!-- <div class="row">
 								<div class="col-xl-2 col-lg-3 col-4">
 									<strong>1 star</strong>
 								</div>
@@ -328,10 +328,10 @@
 								<div class="col-xl-2 col-lg-2 col-2">
 									<span>0</span>
 								</div>
-							</div>
-						</div>
-					</div>
-				</div>
+							</div> -->
+						<!-- </div> -->
+					<!-- </div> -->
+				<!-- </div> -->
 				<div class="student-reviews mt-20">
 					<ul class="list-none">
 						@foreach($colleges as $college)
@@ -417,7 +417,7 @@
 				</div>
 				
 				<!--author-bio-->
-				<div class="author-bio text-center mt-50">
+				<!-- <div class="author-bio text-center mt-50">
 					<h3>Ms. Lucius</h3>
 					<small>Software Engineer</small>
 					<img src="{{asset('FrontDesign/images/courses/authors/1.png')}}" alt="" />
@@ -437,7 +437,7 @@
 						<a href="#"><i class="fa fa-instagram"></i></a>
 						<a href="#"><i class="fa fa-pinterest"></i></a>
 					</div>
-				</div>
+				</div> -->
 				
 				<!--advertisement-->
 				<div class="sidebar-advertisement bg-1 height-250 mt-50">

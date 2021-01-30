@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Intervention\Image\ImageManagerStatic as Image;
+
 class Setting extends Model
 {
     use HasFactory;
@@ -51,6 +53,16 @@ class Setting extends Model
             $imageName =$title.'-'.request()->logo->getClientOriginalName();
             request()->logo->move(public_path('Uploads/Site'), $imageName); 
             $setting->logo = $imageName;
+
+            $fullPath = public_path('Uploads/Site/'.$imageName);
+            $destinationPath = public_path('Uploads/Site');
+            $tiny =  \Tinify\setKey('zKTqyTH753yT0P1FTGYyDQscTG1mQSVF');
+
+            if(!empty($fullPath)){
+                $source = \Tinify\fromFile($fullPath);
+                $source->toFile($fullPath); 
+                Image::make($destinationPath.'/'.$imageName)->resize(150, 100)->save(public_path('Uploads/Site/150x100/'.$imageName)); 
+            }
         }
         $setting->save();
     }

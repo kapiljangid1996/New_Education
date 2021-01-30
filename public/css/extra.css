@@ -24,7 +24,6 @@
 .edutab-color .active {
     color: #fff !important;
     background-color: #6ac142 !important;
-    border-color: #dee2e6 #dee2e6 #fff;
 }
 .edutab-color a {
     width: 125px;
@@ -33,10 +32,11 @@
     color: #fff;
     margin-right: 2px;
 }
-.edutab{    width: 97%;
+.edutab {    
+    width: 68%;
     display: block;
-    margin-left: 12px;
-    margin-top: -1%;
+    margin-left: 16%;
+    margin-top: -3%;
 }
 img#loader {
     position: absolute !important;

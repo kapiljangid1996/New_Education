@@ -80,7 +80,7 @@
 
 						</div>
 						<!--price filter-->
-						<div class="price_filter mt-40">
+						<!-- <div class="price_filter mt-40">
 							<h3 class="sidebar-title">Fee</h3>
 							<div class="price_slider_amount">
 								<div class="row align-items-center">
@@ -93,7 +93,7 @@
 								</div>
 							</div>
 							<div id="slider-fee"></div>
-						</div>
+						</div> -->
 						<!--Ratings-->
 						<!-- <div class="sidebar-category mt-25">
 							<h3 class="sidebar-title">Ratings</h3>
@@ -205,7 +205,7 @@ $("document").ready(function () {
 </script>
 
 <script>
-$("document").ready(function () {alert('hello');
+$("document").ready(function () {
     $( "#slider-fee" ).slider({
 		range: true,
 		min: 1,

@@ -1,18 +1,17 @@
 <?php 
 	$MenuPagemodel = new App\Models\MenuPage;
 ?>
-<header id="sticker" class="header-area">
+<header id="" class="header-area">
 	<div class="container-fluid">
 		<div class="row height-100 align-items-center">
 			<div class="col-xl-2 col-lg-2 col-sm-4 col-4">
 				<div class="logo">
-					<a href="{{url('/')}}"><img src="{{asset('Uploads/Site/').'/'.$settings->logo}}" /></a>
+					<a href="{{url('/')}}"><img src="{{asset('Uploads/Site/150x100').'/'.$settings->logo}}" /></a>
 				</div>
 			</div>
 			<?php echo front_menu($MenuPagemodel,2,array('main_ul_class'=> '','main_li_class'=>'','child_ul_class'=>'submenu','child_li_class'=>'','sub_child_ul_class'=>'submenu sub-2')); ?>
 			<div class="col-xl-3 col-lg-1 col-sm-5 col-5">
 				<div class="header-right header_right">
-					<a href="#" class="btn-common ds-md-none mr-90">Get Started</a>
 					<div class="register-login register_login">
 						<div class="mainmenu mainmenu_class">
 							<nav>
