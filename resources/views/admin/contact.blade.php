@@ -1,0 +1,56 @@
+@extends('layouts.admin')
+
+@section('title','Contact List')
+
+@section('breadcrumb')
+<div class="row align-items-center mb-2">
+	<div class="col">
+		<nav aria-label="breadcrumb">
+			<ol class="breadcrumb">
+				<li class="breadcrumb-item"><a href="{{url('/admin')}}">Dashboard</a></li>
+				<li class="breadcrumb-item active" aria-current="product">Contact List</li>
+			</ol>
+		</nav>
+	</div>
+</div>
+@stop
+
+@section('content')
+<div class="row">
+	<div class="col-md-12 my-4">
+		<div class="card shadow">
+			<div class="card-header">
+				<strong class="card-title">Contact List</strong>
+			</div>
+			<div class="card-body">
+				<table id="example-table" class="table table-borderless table-hover" cellspacing="0" width="100%">
+					<thead>
+						<tr>
+							<th>#</th>
+							<th>Name</th>
+							<th>Email</th>
+							<th>Subject</th>
+							<th>Message</th>
+						</tr>
+					</thead>
+					<tbody id="myTable">
+						<?php
+							$index = 0;	
+							foreach ($contacts as $contact){
+								$index++;
+						?>
+						<tr>
+							<td><?php echo $index; ?></td>
+							<td>{{ $contact->name }}</td>
+							<td>{{ $contact->email }}</td>
+							<td>{{ $contact->subject }}</td>
+							<td>{{ $contact->message }}</td>
+						</tr>
+						<?php  } ?>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+@stop
