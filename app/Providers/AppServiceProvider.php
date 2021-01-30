@@ -8,7 +8,6 @@ Use View;
 use App\Models\Setting;
 use App\Models\Category;
 use App\Models\Rating;
-use App\Models\Slider;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -45,12 +44,6 @@ class AppServiceProvider extends ServiceProvider
         {
             $categories = Category::with('children')->whereNull('parent_id')->get();
             $view->with('categories', $categories);
-        });
-
-        View::composer('front.index', function($view)
-        {
-            $sliders = Slider::all();
-            $view->with('sliders', $sliders);
         });
     }
 }
