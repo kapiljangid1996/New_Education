@@ -235,6 +235,9 @@ Route::prefix('admin')->group(function (){
 	Route::get('/college/scholarships/delete_scholarships/{id}', [CollegesController::class, 'collegeScholarshipDelete']);	
 
 	//Site Setting
+	Route::get('/contact-list', [App\Http\Controllers\Admin\AdminController::class, 'contactList']);	
+
+	//Site Setting
 	Route::get('/setting', [App\Http\Controllers\Admin\SettingsController::class, 'index']);	
 	Route::post('/setting/{id}', [App\Http\Controllers\Admin\SettingsController::class, 'update']);
 
