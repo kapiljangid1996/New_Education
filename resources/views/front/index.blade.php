@@ -20,7 +20,7 @@
 							<div class="row">
 								<div class="col-md-12 px-0">
 									<div class="img-box">
-										<img class="d-block w-100" src="{{asset('Uploads/Slider/1920x800').'/'.$slider->image}}"  style="width: 1920px; height: 800px">
+										<img class="d-block w-100" src="{{asset('Uploads/Slider/1920x800').'/'.$slider->image}}"  style="width: 1920px; height: 570px">
 									</div>
 								</div>
 							</div>
@@ -1252,7 +1252,7 @@ $('.searchresult').keydown(function(){
 	.top-slider-text{		
 		margin-left: 110px;
 	    position: absolute;
-	    margin-top: -42%;
+	    margin-top: -35%;
 	}
 	.slider-text-style{
 	    background: rgba(0,0,0,.5);

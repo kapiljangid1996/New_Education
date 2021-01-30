@@ -45,7 +45,7 @@ class Slider extends Model
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
                 $source->toFile($fullPath); 
-                Image::make($destinationPath.'/'.$imageName)->resize(1920, 800)->save(public_path('Uploads/Slider/1920x800/'.$imageName)); 
+                Image::make($destinationPath.'/'.$imageName)->resize(1920, 570)->save(public_path('Uploads/Slider/1920x570/'.$imageName)); 
             }
         }
         $sliders->save();
@@ -77,7 +77,7 @@ class Slider extends Model
             }
 
             if (file_exists( public_path("Uploads/Slider/{$old_image}"))) {
-                unlink(public_path("Uploads/Slider/1920x800/{$old_image}"));
+                unlink(public_path("Uploads/Slider/1920x570/{$old_image}"));
             }
 
             $slug = $request->get('slug');
@@ -92,7 +92,7 @@ class Slider extends Model
             if(!empty($fullPath)){
                 $source = \Tinify\fromFile($fullPath);
                 $source->toFile($fullPath); 
-                Image::make($destinationPath.'/'.$imageName)->resize(1920, 800)->save(public_path('Uploads/Slider/1920x800/'.$imageName)); 
+                Image::make($destinationPath.'/'.$imageName)->resize(1920, 570)->save(public_path('Uploads/Slider/1920x570/'.$imageName)); 
             }
         }
         $sliders->save();

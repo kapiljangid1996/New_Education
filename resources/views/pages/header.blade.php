@@ -49,7 +49,7 @@
 
 <style>
 	.header_right{
-		margin-top: 20px;
+		margin-top: 50px;
 	}
 	.register_login{
 		float: right; 
