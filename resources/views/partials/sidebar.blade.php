@@ -25,8 +25,14 @@
 			
 			<li class="nav-item w-100">
 				<a class="nav-link" href="{{url('/admin/menu')}}">
-					<i class="fe fe-layers fe-16"></i>
+					<i class="fe fe-menu fe-16"></i>
 					<span class="ml-3 item-text">Menu Builder</span>
+				</a>
+			</li>
+			<li class="nav-item w-100">
+				<a class="nav-link" href="{{url('/admin/slider')}}">
+					<i class="fe fe-image fe-16"></i>
+					<span class="ml-3 item-text">Slider</span>
 				</a>
 			</li>
 			<li class="nav-item w-100">

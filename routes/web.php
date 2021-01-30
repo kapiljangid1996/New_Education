@@ -82,6 +82,9 @@ Route::prefix('admin')->group(function (){
 	Route::post('/menu/ajaxEditMenuPage', [App\Http\Controllers\Admin\MenusController::class, 'ajaxEditMenuPage']);
 
 	//Category Maker
+	Route::resource('slider', App\Http\Controllers\Admin\SlidersController::class);
+
+	//Category Maker
 	Route::resource('category', App\Http\Controllers\Admin\CategoriesController::class);
 
 	//Course

@@ -232,8 +232,8 @@
 
 <script>
   CKEDITOR.replace( 'long_description', {
-    filebrowserBrowseUrl: '/Education/public/ckfinder/ckfinder.html',
-    filebrowserUploadUrl: '/Education/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+    filebrowserBrowseUrl: 'http://college.dfwebsolutions.com/public/ckfinder/ckfinder.html',
+    filebrowserUploadUrl: 'http://college.dfwebsolutions.com/public/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
   });
 </script>
 

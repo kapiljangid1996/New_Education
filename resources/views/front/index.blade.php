@@ -7,7 +7,7 @@
 <div class="banner-area bg-1 pt-145 pb-430">
 	<div class="container">
 		<div class="row">
-			<div class="col-lg-10 offset-lg-1">
+			<!-- <div class="col-lg-10 offset-lg-1">
 				<div class="banner-inner text-center">
 					<div class="banner-text">
 						<h1>Find Colleges Online</h1>
@@ -39,7 +39,7 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 	</div>
 </div>
