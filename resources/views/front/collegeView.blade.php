@@ -109,6 +109,9 @@
 								<input type="checkbox" class="filter_colleges rating" name="rating[]" value="1"><i class="fa fa-star labelOwnership"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i><i class="fa fa-star-o"></i>
 							</div>
 						</div> -->
+						<div class="tags-list mt-35 clear-filter" @if(session()->has('form_data')) style="display:block" @else style="display:none" @endif >
+							<a> Clear <button class="tags-style"><i class="fa fa-times"></i></button></a>
+						</div>
 					</form>
 				</div>
 			</div>
@@ -201,6 +204,11 @@ $("document").ready(function () {
             }
         });
     });
+
+    function uncheckAll() {
+  		$("input[type='checkbox']:checked").prop("checked", false)
+	}
+	$(':button').on('click', uncheckAll)
 });
 </script>
 
@@ -219,4 +227,10 @@ $("document").ready(function () {
 		" - " + $( "#slider-fee" ).slider( "values", 1 ) + " L");
 });
 </script>
+<style>
+	.tags-style{
+		background-color: transparent;
+		border: 0;
+	}
+</style>
 @stop

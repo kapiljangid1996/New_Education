@@ -333,6 +333,7 @@
 					<!-- </div> -->
 				<!-- </div> -->
 				<div class="student-reviews mt-20">
+					<h3>Review and Rating</h3>
 					<ul class="list-none">
 						@foreach($colleges as $college)
 							@foreach($college->reviews as $review)
@@ -440,7 +441,7 @@
 				</div> -->
 				
 				<!--advertisement-->
-				<div class="sidebar-advertisement bg-1 height-250 mt-50">
+				<!-- <div class="sidebar-advertisement bg-1 height-250 mt-50">
 					<div class="d-table">
 						<div class="vertical-middle">
 							<h3>Book Store</h3>
@@ -448,7 +449,7 @@
 							<a href="#" class="btn-common mt-10">Visit Store</a>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

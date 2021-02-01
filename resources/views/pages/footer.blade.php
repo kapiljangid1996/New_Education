@@ -10,17 +10,17 @@
 							<li>
 								<span>Email:</span>
 								<a> {{ $settings->email1 }} </a>
-								<a> {{ $settings->email2 }} </a>
+								<a> {{ $settings->email2 ? ','.$settings->email2 : ''}} </a>
 							</li>
 							<li>
 								<span>Call directly:</span>
-								<a> {{ $settings->contact1 }} </a>, 
-								<a> {{ $settings->contact2 }} </a>
+								<a> {{ $settings->contact1 }} </a>
+								<a> {{ $settings->contact2 ? ','.$settings->contact2 : ''}} </a>
 							</li>
 							<li>
 								<span>Address:</span>
-								<a> {{ $settings->address1 }} </a>, 
-								<a> {{ $settings->address2 }} </a>
+								<a> {{ $settings->address1 }} </a> 
+								<a> {{ $settings->address2 ? ','.$settings->address2 : ''}} </a>
 							</li>
 						</ul>
 					</div>

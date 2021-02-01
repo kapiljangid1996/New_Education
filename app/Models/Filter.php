@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\College\College;
 use App\Models\College\CourseFee;
 use App\Models\Course\Course;
+use Session;
 
 class Filter extends Model
 {
@@ -97,6 +98,7 @@ class Filter extends Model
         }
 
         else{
+            Session::forget('form_data'); 
             $query; 
         }
 
@@ -137,6 +139,7 @@ class Filter extends Model
         }
 
         else{
+            Session::forget('course_form_data'); 
             $query = Course::where('status','=',1)->paginate(10); 
         }
 
