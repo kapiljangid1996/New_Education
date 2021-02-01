@@ -13,7 +13,7 @@ class College extends Model
 
     protected $table = 'colleges';
 
-    protected $fillable = ['name','slug','ownership','state','city','street','post_code','contact1','contact2','email1','email2','website','long_description','short_description','image','logo','avg_rating','meta_name','meta_description','meta_keyword','status','sort_order'];
+    protected $fillable = ['name','slug','ownership','state','city','street','post_code','contact1','contact2','email1','email2','website','long_description','short_description','image','logo','avg_rating','meta_name','meta_description','meta_keyword','status','featured_colleges','sort_order'];
 
     public function state_name()
     {

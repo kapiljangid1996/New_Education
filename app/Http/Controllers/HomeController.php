@@ -19,7 +19,8 @@ class HomeController extends Controller
     public function index()
     {
         $sliders = Slider::where('status',1)->get();
-        return view('front.index')->with('sliders',$sliders);
+        $colleges = College::with('state_name')->with('city_name')->where('featured_colleges','=', 1)->take(5)->get(); 
+        return view('front.index')->with('sliders',$sliders)->with('colleges',$colleges);
     }
 
     public function courseView(Request $request)
