@@ -17,6 +17,7 @@ use App\Models\College\CutOff;
 use App\Models\College\Infrastructure;
 use App\Models\College\Scholarship;
 use App\Models\College\Coursefee_Exam;
+use File;
 
 class CollegesController extends Controller
 {
@@ -67,6 +68,10 @@ class CollegesController extends Controller
         CutOff::where('college_id',$id)->delete();
         Infrastructure::where('college_id',$id)->delete();
         $colleges = College::findOrFail($id);
+        if(!empty($colleges) && !empty($colleges['image']) && !empty($colleges['logo'])){
+            $files = array("public/Uploads/College/Image/".$colleges['image'],"public/Uploads/College/Image/400x200/".$colleges['image'], "public/Uploads/College/Logo/".$colleges['logo'],"public/Uploads/College/Logo/55x55/".$colleges['logo']);
+            File::delete($files);
+        }
         $colleges->delete();
         return redirect()->route('college.index')->with('success','College Record Deleted!');
     }

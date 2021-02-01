@@ -5,7 +5,7 @@
 @section('content')
 <!--banner-area start-->
 <div class="slider">		
-	<div class="slider_container">
+	<div class="slider">		
 		<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
 			<ol class="carousel-indicators">
 				<?php $i=0 ?>
@@ -13,28 +13,25 @@
 					<li data-target="#carouselExampleIndicators" data-slide-to="<?php echo $i++ ?>" class="{{$key == 0 ? 'active' : '' }}"></li>
 				@endforeach
 			</ol>
-			<div class="carousel-inner" role="listbox">
+			<div class="carousel-inner">
 				@foreach($sliders as $key => $slider)
 					<div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-						<div class="container-fluid">
-							<div class="row">
-								<div class="col-md-12 px-0">
-									<div class="img-box">
-										<img class="d-block w-100" src="{{asset('Uploads/Slider/1920x800').'/'.$slider->image}}"  style="width: 1920px; height: 570px">
-									</div>
-								</div>
-							</div>
+						<img class="d-block w-100" src="{{asset('Uploads/Slider/1920x570').'/'.$slider->image}}" height="550px">
+						<div class="carousel-caption d-none d-md-block">
+							<h5 style="color: white">{{ $slider->button_text }}</h5>
 						</div>
 					</div>
 				@endforeach
 			</div>
 			<a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-				<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
 			</a>
 			<a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-				<span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
 			</a>
-		</div>
+		</div>	
 	</div>
 </div>
 <div class="container-fluid top-slider-text text-center">
@@ -155,10 +152,10 @@ $('.searchresult').keydown(function(){
 </script>
 
 <style>
-	.top-slider-text{		
-		margin-left: 110px;
-	    position: absolute;
-	    margin-top: -35%;
+	.top-slider-text {
+	    margin-left: 110px;
+	    position: relative;
+	    margin-top: -33%;
 	}
 	.slider-text-style{
 	    background: rgba(0,0,0,.5);
@@ -169,6 +166,13 @@ $('.searchresult').keydown(function(){
 	.search-edutab{
 		width: 72%;
     	margin-left: 14%;
+	}	
+	@media (max-width: 767px){.top-slider-text {
+	    left: 0;
+	    position: relative;
+	    top: 0;
+	    margin-left: 0;
+	    margin-top: 0;
 	}
 </style>
 @stop

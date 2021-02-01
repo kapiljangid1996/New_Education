@@ -76,7 +76,7 @@ class Slider extends Model
                 unlink(public_path("Uploads/Slider/{$old_image}"));
             }
 
-            if (file_exists( public_path("Uploads/Slider/{$old_image}"))) {
+            if (file_exists( public_path("Uploads/Slider/1920x570/{$old_image}"))) {
                 unlink(public_path("Uploads/Slider/1920x570/{$old_image}"));
             }
 

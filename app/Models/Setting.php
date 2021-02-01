@@ -49,6 +49,11 @@ class Setting extends Model
             {
                 unlink(public_path("Uploads/Site/{$old_logo}"));
             }
+
+            if (file_exists( public_path().'Uploads/College/Site/150x100/'.$old_logo)) {
+                unlink(public_path("Uploads/College/Site/150x100/{$old_logo}"));
+            }
+            
             $title = $request->get('title');
             $imageName =$title.'-'.request()->logo->getClientOriginalName();
             request()->logo->move(public_path('Uploads/Site'), $imageName); 

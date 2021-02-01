@@ -35,26 +35,26 @@ class Filter extends Model
 
         $data=  array();
 
-        $query = College::with('state_name')->with('city_name')->where('status','=',1)->orderBy('id', 'desc');
+        $query = College::with('state_name')->with('city_name')->where('status',1)->orderBy('id', 'desc');
 
         if (!empty($form_data['college_name']) && !empty($form_data['city']) && !empty($form_data['ownership']) && !empty($form_data['rating'])) {
-            $query = College::where('id',$form_data['college_name']);
+            $query = College::where('status',1)->where('id',$form_data['college_name']);
         }
 
         elseif (!empty($form_data['college_name']) && !empty($form_data['city'])) {
-            $query = College::where('id',$form_data['college_name']);   
+            $query = College::where('status',1)->where('id',$form_data['college_name']);   
         }
 
         elseif (!empty($form_data['college_name']) && !empty($form_data['ownership'])) {
-            $query = College::where('id',$form_data['college_name']);   
+            $query = College::where('status',1)->where('id',$form_data['college_name']);   
         }
 
         elseif (!empty($form_data['college_name']) && !empty($form_data['rating'])) {
-            $query = College::where('id',$form_data['college_name']);   
+            $query = College::where('status',1)->where('id',$form_data['college_name']);   
         }
 
         elseif (!empty($form_data['city']) && !empty($form_data['ownership'])) {
-            $query = College::whereIn('city',$form_data['city'])->whereIn('ownership',$form_data['ownership']);
+            $query = College::where('status',1)->whereIn('city',$form_data['city'])->whereIn('ownership',$form_data['ownership']);
         }
 
         elseif (!empty($form_data['ownership']) && !empty($form_data['rating'])) { 
@@ -65,19 +65,19 @@ class Filter extends Model
                     $data[] = $rate;
                 }                         
             }  
-            $query = College::whereIn('ownership',$form_data['ownership'])->whereIn('id',$data);   
+            $query = College::where('status',1)->whereIn('ownership',$form_data['ownership'])->whereIn('id',$data);   
         }
 
         elseif (!empty($form_data['college_name'])) {
-            $query = College::where('id',$form_data['college_name']);
+            $query = College::where('status',1)->where('id',$form_data['college_name']);
         }
 
         elseif (!empty($form_data['city'])){
-            $query = College::whereIn('city',$form_data['city']);
+            $query = College::where('status',1)->whereIn('city',$form_data['city']);
         }
 
         elseif (!empty($form_data['ownership'])){
-            $query = College::whereIn('ownership',$form_data['ownership']);
+            $query = College::where('status',1)->whereIn('ownership',$form_data['ownership']);
         }
 
         elseif (!empty($form_data['rating'])){
@@ -88,13 +88,13 @@ class Filter extends Model
                     $data[] = $rate;
                 }                         
             }
-            $query = College::whereIn('id',$data);
+            $query = College::where('status',1)->whereIn('id',$data);
         }
 
         elseif (!empty($form_data['price'])){
             $arr = explode(" - ", $form_data['price']);
 
-            $query = College::whereIn('id',$data);
+            $query = College::where('status',1)->whereIn('id',$data);
         }
 
         else{
