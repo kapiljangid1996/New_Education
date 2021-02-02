@@ -28,7 +28,7 @@ class CollegesController extends Controller
 
     public function index()
     {
-    	$colleges = College::orderBy('id', 'desc')->get();
+    	$colleges = College::with('category_list.category_name')->orderBy('id', 'desc')->get();
         return view('admin.college.index')->with('colleges',$colleges);
     }
 

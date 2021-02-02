@@ -12,4 +12,9 @@ class College_Category extends Model
     protected $table = 'college_categories';
 
     protected $fillable = ['category_id','college_id'];
+
+    public function category_name()
+    {
+        return $this->belongsTo('App\Models\Category','category_id');
+    }
 }

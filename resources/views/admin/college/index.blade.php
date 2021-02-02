@@ -24,7 +24,7 @@
 				<a href="{{route('college.create')}}" class="btn btn-primary btn-round" style="float: right;">Add</a>
 			</div>
 			<div class="card-body">
-				<table id="example-table" class="table table-borderless table-hover" cellspacing="0" width="100%">
+				<table id="example-table" class="table table-borderless table-hover table-responsive" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>#</th>
@@ -33,6 +33,7 @@
 							<th>Email</th>
 							<th>Contact</th>
 							<th>Status</th>
+							<th>Is Featured</th>
 							<th>Action</th>
 							<th>More</th>
 						</tr>
@@ -49,13 +50,8 @@
 							<td>{{ $college->ownership }}</td>
 							<td>{{ $college->email1 }} {{ $college->email2 ? ','.$college->email2 : ''}}</td>
 							<td>{{ $college->contact1 }} {{ $college->contact2 ? ','.$college->contact2 : ''}}</td>
-							<td>
-								@if($college->status == 1)
-                                  	Active
-                              	@else
-                                  	Inactive
-                              	@endif
-							</td>
+							<td>{{ $college->status ? 'Active' : 'Inactive'}}</td>
+							<td>{{ $college->featured_colleges ? 'Yes' : 'No'}}</td>
 							<td>
 								<button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted sr-only">Action</span></button>
 								<div class="dropdown-menu dropdown-menu-right">

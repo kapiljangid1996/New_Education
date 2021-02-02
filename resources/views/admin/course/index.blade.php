@@ -30,6 +30,7 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Slug</th>
+							<th>Category</th>
 							<th>Status</th>
 							<th>Action</th>
 						</tr>
@@ -44,13 +45,8 @@
 							<td><?php echo $index; ?></td>
 							<td>{{ $course->name }}</td>
 							<td>{{ $course->slug }}</td>
-							<td>
-								@if($course->status == 1)
-                                  	Active
-                              	@else
-                                  	Inactive
-                              	@endif
-							</td>
+							<td>{{ $course->category ? $course->category->name : ''}}</td>
+							<td>{{ $course->status ? 'Active' : 'Inactive'}}</td>
 							<td>
 								<button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="text-muted sr-only">Action</span></button>
 								<div class="dropdown-menu dropdown-menu-right">
