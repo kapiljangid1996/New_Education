@@ -57,3 +57,42 @@ img#loader {
 	margin-left: 15px;
     pointer-events: none !important;
 }
+.tags-style{
+    background-color: transparent;
+    border: 0;
+}
+.edu-font{
+    font-family: arial;
+    text-transform: uppercase; 
+    font-size: 20px;
+}
+.edu-font-sub{
+    font-family: arial;
+    text-transform: uppercase; 
+    font-size: 16px;
+}
+.top-slider-text {
+    margin-left: 110px;
+    position: relative;
+    margin-top: -33%;
+}
+.slider-text-style{
+    background: rgba(0,0,0,.5);
+    color: #fff;
+    border-radius: 6px;
+    padding: 20px;      
+}
+.search-edutab{
+    width: 72%;
+    margin-left: 14%;
+}   
+@media (max-width: 767px){.top-slider-text {
+    left: 0;
+    position: relative;
+    top: 0;
+    margin-left: 0;
+    margin-top: 0;
+}
+.educou {
+    margin-top: 14%;
+}

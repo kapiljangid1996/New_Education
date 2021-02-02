@@ -39,7 +39,7 @@
 		<div class="row">
 			<div class="col-lg-3">
 				<div class="site-sidebar">
-					<h3>Filters: </h3>
+					<h3 class="edu-font">Filters: </h3>
 					<form id="collegefilterform" method="get" action="#">
 						<!--search-->
 						<div class="sidebar-search">
@@ -51,7 +51,7 @@
 						</div>
 						<!--location-->
 						<div class="sidebar-category mt-35">
-							<h3 class="sidebar-title">Location</h3>
+							<h3 class="sidebar-title edu-font-sub">Location</h3>
 							<div class="sidebar-search">
 								<input type="text" placeholder="Search Location" id="searchText" />
 								<button><i class="fa fa-search"></i></button>
@@ -70,7 +70,7 @@
 						</div>
 						<!--category-->
 						<div class="sidebar-category mt-25">
-							<h3 class="sidebar-title">Ownership</h3>
+							<h3 class="sidebar-title edu-font-sub">Ownership</h3>
 
 							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Private" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Private',$_GET['ownership'])) ? 'checked=checked' : '' ;?> ><label class="labelOwnership"> Private </label><br>
 
@@ -227,10 +227,4 @@ $("document").ready(function () {
 		" - " + $( "#slider-fee" ).slider( "values", 1 ) + " L");
 });
 </script>
-<style>
-	.tags-style{
-		background-color: transparent;
-		border: 0;
-	}
-</style>
 @stop

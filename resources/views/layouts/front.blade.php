@@ -319,7 +319,7 @@
 			
 			$('.filter_colleges').on('change', function (e) {
 				e.preventDefault(); 
-				$('.clear-filter').css("display","block");
+				$('.loader').css("display","block");
 				college_filter();
 	    	});
 

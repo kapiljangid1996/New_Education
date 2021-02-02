@@ -71,13 +71,13 @@
 		</div>
 	</div>	
 </div>
-
-<div class="courses-area pb-30 fix mt-60">
+<div style="clear: both;"></div>
+<div class="courses-area pb-30 fix mt-60 educou" style="margin-top: 14%;">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="section-title text-center">
-					<h2>Our Courses</h2>
+					<h2>Featured Colleges</h2>
 				</div>
 			</div>
 		</div>
@@ -96,11 +96,11 @@
 									<div class="author-name">
 										<img src="{{asset('Uploads/College/Logo/').'/'.$college->logo}}" alt="" />
 										<a href="{{url('/college/'.$college->slug)}}">{{$college->name}}</a>
-										<p>{{$college->city_name->name}}, {{$college->state_name->name}}</p>
+										<p style="margin-left: 22%">{{$college->city_name->name}}, {{$college->state_name->name}}</p>
 									</div>
 								</div>
 								<div class="course-text mt-10">
-									<p>{!!  substr(strip_tags($college->short_description), 0, 100) !!}</p>
+									<p>{!!  substr(strip_tags($college->short_description), 0, 90) !!}</p>
 								</div>
 							</div>
 							<div class="course-meta">
@@ -150,29 +150,4 @@ $('.searchresult').keydown(function(){
 
 });
 </script>
-
-<style>
-	.top-slider-text {
-	    margin-left: 110px;
-	    position: relative;
-	    margin-top: -33%;
-	}
-	.slider-text-style{
-	    background: rgba(0,0,0,.5);
-	    color: #fff;
-	    border-radius: 6px;
-	    padding: 20px;		
-	}
-	.search-edutab{
-		width: 72%;
-    	margin-left: 14%;
-	}	
-	@media (max-width: 767px){.top-slider-text {
-	    left: 0;
-	    position: relative;
-	    top: 0;
-	    margin-left: 0;
-	    margin-top: 0;
-	}
-</style>
 @stop
