@@ -7,7 +7,7 @@
 			<a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="{{url('/admin')}}">
 				<svg version="1.1" id="logo" class="navbar-brand-img brand-sm" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve">
 					<g>
-						<img src="{{asset('Uploads/Site/').'/'.$settings->logo}}" alt="" width="150px" height="50px" style="margin-left: -35px;">
+						<img src="{{asset('Uploads/Site/150x100/').'/'.$settings->logo}}" alt="" width="150px" height="50px" style="margin-left: -35px;">
 					</g>
 				</svg>
 			</a>
