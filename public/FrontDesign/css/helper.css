@@ -3,7 +3,7 @@
 /*----------------------------------------*/
 a {transition: all 0.3s ease 0s;text-decoration:none;}
 a, a:hover {
-  color: #6ac142;
+  color: #c22126;
   text-decoration: none;
 }
 a:active, a:hover, a:focus {
@@ -106,7 +106,7 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 /*  Button CSS
 /*----------------------------------------*/
 .btn-common {
-	background-color:#6ac142;
+	background-color:#c22126;
 	font-family: 'Roboto', sans-serif;
     font-size: 13px;
     font-weight: 700;
@@ -119,23 +119,23 @@ input:-moz-placeholder, textarea:-moz-placeholder {
 	cursor:pointer;
 	display:inline-block;
 	text-transform:uppercase;
-	border:2px solid #6ac142;
+	border:2px solid #c22126;
 	border-radius:30px;
 	transition:.3s;
 }
 .btn-common:hover {
-    background-color: #529e2f;
-	border-color:#529e2f;
+    background-color: #c22126;
+	border-color:#c22126;
     color: #ffffff;
 }
 .btn-common.btn-cover {
-	background-color:#e23e1d;
-	border-color:#e23e1d;
+	background-color:#c22126;
+	border-color:#c22126;
 	color:#ffffff;
 }
 .btn-common.btn-cover:hover {
-	background-color:#5ab131;
-	border-color:#5ab131;
+	background-color:#c22126;
+	border-color:#c22126;
 }
 .btn-common.width-115 {
 	min-width:115px;

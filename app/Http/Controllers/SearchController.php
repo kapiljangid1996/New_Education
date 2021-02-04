@@ -43,7 +43,7 @@ class SearchController extends Controller
                 $data = College::with('city_name')->orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->orWhere('city', 'like', '%'.$query.'%')->orWhere('state', 'like', '%'.$query.'%')->get();
                 $output = '<ul class="dropdown-menu edutab" style="display:block; height: 265px; overflow:hidden; overflow-y:scroll;">';
                 foreach($data as $row){             
-                    $output .= '<li><a class="search-list" href="/New_Education/college/'.$row->slug.'">'.$row->name.', '.$row->city_name->name.'</a></li>';
+                    $output .= '<li><a class="search-list" href="/college/'.$row->slug.'">'.$row->name.', '.$row->city_name->name.'</a></li>';
                 }           
                 $output .= '</ul>';
             }
@@ -51,7 +51,7 @@ class SearchController extends Controller
                 $data = Course::orderBy('name','asc')->where('name', 'like', '%'.$query.'%')->get();            
                 $output = '<ul class="dropdown-menu edutab" style="display:block;">';
                 foreach($data as $row){             
-                    $output .= '<li><a class="search-list" href="/New_Education/course/'.$row->slug.'">'.$row->name.'</a></li>';
+                    $output .= '<li><a class="search-list" href="/course/'.$row->slug.'">'.$row->name.'</a></li>';
                 }           
                 $output .= '</ul>';
             }

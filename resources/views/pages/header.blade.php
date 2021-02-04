@@ -53,7 +53,7 @@
 	}
 	.register_login{
 		float: right; 
-		margin-top: -52px;
+		margin-top: -43px;
 	}
 	.mainmenu_class{		
 		padding-right: 35px;

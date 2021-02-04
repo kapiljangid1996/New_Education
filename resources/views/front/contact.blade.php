@@ -38,7 +38,7 @@
 		<div class="col-lg-3"></div>
 		<div class="col-lg-6 text-center">
 			<div class="contact-form input-form mt-sm-50">
-				<form id="contactForm" method="POST" action="{{route('contact.submit')}}">
+				<form method="POST" action="{{route('contact.submit')}}">
 					@csrf
 					<h3>Contact Us Form</h3><hr>
 					<div class="row">
@@ -49,7 +49,7 @@
 							<input type="text" name="email" placeholder="Email" required />
 						</div>
 						<div class="col-sm-12 mt-30">
-							<input type="text" name="subject" placeholder="Subject" required />
+							<input type="text" name="contact" placeholder="Contact Number" required />
 						</div>
 						<div class="col-sm-12 mt-30">
 							<textarea name="message" placeholder="Message" required></textarea>

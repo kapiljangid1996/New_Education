@@ -11,6 +11,7 @@ use App\Models\City;
 use App\Models\Rating;
 use App\Models\Filter;
 use App\Models\Slider;
+use App\Models\WebsiteVisitor;
 use Newsletter;
 use DB;
 
@@ -20,6 +21,16 @@ class HomeController extends Controller
     {
         $sliders = Slider::where('status',1)->get();
         $colleges = College::with('state_name')->with('city_name')->where('featured_colleges','=', 1)->take(5)->get(); 
+
+        $get_ip = WebsiteVisitor::where('ip_address','=',$_SERVER['REMOTE_ADDR'])->count();
+
+        if ($get_ip < 1) {
+            $websiteVisitor = new WebsiteVisitor;
+
+            $websiteVisitor->ip_address = $_SERVER['REMOTE_ADDR'];
+
+            $websiteVisitor->save();
+        }
         return view('front.index')->with('sliders',$sliders)->with('colleges',$colleges);
     }
 

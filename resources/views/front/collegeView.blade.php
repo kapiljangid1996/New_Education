@@ -62,7 +62,7 @@
 									@foreach($cities as $city_value)
 										<li>
 											<input type="checkbox" class="filter_colleges" name="city[]" value="{{ $city_value->city_name ? $city_value->city_name->id : ''}}" <?php echo (isset($_GET['city']) && !empty($_GET['city']) && in_array($city_value->city_name->id,$_GET['city'])) ? 'checked=checked' : '' ;?> city_name="{{ $city_value->city_name ? $city_value->city_name->name : ''}}"> 
-											<label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} ({{ $city_value['total']}})</label>
+											<label class="labelOwnership">{{ $city_value->city_name ? $city_value->city_name->name : ''}} <!-- ({{ $city_value['total']}}) --></label>
 										</li>
 									@endforeach
 								</ul>
@@ -143,7 +143,7 @@
 												</div>
 												<div class="course-meta">
 													<p>{{$college->city_name->name}}, {{$college->state_name->name}}</p>
-													<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_st)->format('d F, Y')}}</a>
+													<a><i class="fa fa-calendar"></i>{{ \Carbon\Carbon::parse($college->created_at)->format('d F, Y')}}</a>
 												</div>
 												<p>{!!  substr(strip_tags($college->short_description), 0, 150) !!}</p>
 											</div>

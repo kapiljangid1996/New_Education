@@ -18,12 +18,11 @@
 	color: black
 }
 .search-list:hover {
-	text-decoration: underline;
 	color: red;
 }
 .edutab-color .active {
     color: #fff !important;
-    background-color: #6ac142 !important;
+    background-color: #c22126 !important;
 }
 .edutab-color a {
     width: 125px;
@@ -33,10 +32,15 @@
     margin-right: 2px;
 }
 .edutab {    
-    width: 68%;
+    width: auto;
     display: block;
-    margin-left: 16%;
-    margin-top: -3%;
+    margin-left: 13.3%;
+    margin-top: -1.2%;
+}
+.edutab li{
+    padding-top: 2px;
+    padding-bottom: 2px;
+    letter-spacing: .5px;
 }
 img#loader {
     position: absolute !important;
@@ -83,16 +87,18 @@ img#loader {
     padding: 20px;      
 }
 .search-edutab{
-    width: 72%;
+    width: 77.3%;
     margin-left: 14%;
 }   
-@media (max-width: 767px){.top-slider-text {
-    left: 0;
-    position: relative;
-    top: 0;
-    margin-left: 0;
-    margin-top: 0;
+@media (max-width: 767px){
+    .top-slider-text {
+        left: 0;
+        position: relative;
+        top: 0;
+        margin-left: 0;
+        margin-top: 0;
+    }
 }
-.educou {
+.educourse {
     margin-top: 14%;
 }

@@ -169,13 +169,13 @@ h1, h2, h3, h4, h5, h6 {
 	line-height: 40px;
 	border-radius: 3px;
 	text-align: center;
-	background: #6ac142;
+	background: #c22126;
 }
 /*----------------------------------------*/
 /*  2.  Header Area CSS
 /*----------------------------------------*/
 .header-area {
-	background-color:#ffffff;
+	background-color:#c22126;
 	box-shadow: 0px 11px 27px 0px rgba( 110, 132, 152, .10 );
 	position:relative;
 }
@@ -195,7 +195,7 @@ h1, h2, h3, h4, h5, h6 {
     animation: 900ms cubic-bezier(0.2, 1, 0.22, 1) 0s normal none 1 running fadeInDown;
 }
 .header-area.stick {
-	background-color:#fff;
+	background-color:#c22126;
 	z-index: 9999;
 }
 .header-area.stick .row {
@@ -205,10 +205,10 @@ h1, h2, h3, h4, h5, h6 {
 /*  2.2  Header Top
 /*----------------------------------------*/
 .header-top a {
-	color:#343e51;
+	color:#c22126;
 }
 .header-top a:hover {
-	color:#6ac142;
+	color:#c22126;
 }
 /*----------------------------------------*/
 /*  2.3  Mainmenu CSS
@@ -227,11 +227,12 @@ h1, h2, h3, h4, h5, h6 {
 	font-size:14px;
 	font-weight:500;
 	text-transform:uppercase;
-	color:#343e51;
+	color:white;
 	display:block;
-	padding:20px 0;
+	padding:5px 15px 5px 15px;
 	margin-right:30px;
 	position:relative;
+	border-radius: 5px;
 }
 .mainmenu.text-white nav > ul > li > a {
 	color:#ffffff;
@@ -253,7 +254,8 @@ h1, h2, h3, h4, h5, h6 {
 	margin-right:0;
 }
 .mainmenu nav ul li a:hover {
-	color:#6ac142;
+	color: #dc3545;
+    background-color: #fff;
 }
 .mainmenu-area.stick .mini-cart > ul > li > a {
     background-color: #ebebeb;
@@ -272,6 +274,7 @@ h1, h2, h3, h4, h5, h6 {
 /*----------------------------------------*/
 .mainmenu nav ul li .submenu {
 	background-color:#ffffff;
+	border-radius: 5px;
 	box-shadow: 10px 17.321px 46px 0px rgba( 0, 0, 0, .10 );
 	position:absolute;
 	top:100%;
@@ -297,8 +300,8 @@ h1, h2, h3, h4, h5, h6 {
 	color:#343e51 !important;
 }
 .mainmenu nav ul li .submenu li a:hover {
-	background-color:#6ac142;
-	color:#ffffff !important;
+	background-color:#f1f1f1;
+	color:black !important;
 }
 .mainmenu nav ul li .submenu li .sub-2 {
 	top:0;
@@ -503,15 +506,15 @@ h1, h2, h3, h4, h5, h6 {
 	border-color:#191919;
 }
 .mini-cart-checkout a.view-cart:hover {
-	background-color:#529e2f;
-	border-color:#529e2f;
+	background-color:#c22126;
+	border-color:#c22126;
 }
 .mini-cart-checkout a.checkout {
 	background-color:#6ac142;
 }
 .mini-cart-checkout a.checkout:hover {
-    background-color: #529e2f;
-    border-color: #529e2f;
+    background-color: #c22126;
+    border-color: #c22126;
 }
 /*----------------------------------------*/
 /*  2.7  Register Login CSS
@@ -525,7 +528,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 .register-login a:hover {
 	color:#6ac142;
-	text-decoration:underline;
 }
 /*----------------------------------------*/
 /*  3. Banner Area
@@ -745,7 +747,7 @@ h1, h2, h3, h4, h5, h6 {
 	color:#343e51;
 }
 .course-text h3 a:hover {
-	color:#6ac142;
+	color:#c22126;
 }
 .course-text p {
 	margin-bottom:0;
@@ -1149,7 +1151,7 @@ h1, h2, h3, h4, h5, h6 {
 	color:#677083;
 }
 .footer-menu ul li a:hover {
-	color:#6ac142;
+	color: #c22126;
 }
 .recent-posts ul li h4 {
 	font-size:16px;
@@ -1186,7 +1188,7 @@ h1, h2, h3, h4, h5, h6 {
 /*  10.2  Footer Bottom
 /*----------------------------------------*/
 .footer-bottom {
-	background-color:#6ac142;
+	background-color:#c22126;
 }
 .footer-bottom .row {
 	height:50px;
@@ -1676,7 +1678,7 @@ h1, h2, h3, h4, h5, h6 {
 	transition:.3s;
 }
 .price_slider_amount button:hover {
-	background-color:#529e2f;
+	background-color:#c22126;
 }
 .site-sidebar select {
 	width:100%;
@@ -1820,10 +1822,11 @@ h1, h2, h3, h4, h5, h6 {
 	border-bottom:1px solid #efefef;
 }
 .course-details h2 {
-	font-size:36px;
-	color:#000000;
+	font-size:24px;
 	line-height:48px;
-	margin:-20px 0 0 0;
+	color: #000000;
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
 }
 .course-details .course-info {
 	border:0;
@@ -1869,6 +1872,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 .course-details h3 {
 	color:#000000;
+	margin-top: 20px;
+    margin-bottom: 20px;
 }
 .course-details ul li i {
 	color:#6ac142;
@@ -1988,7 +1993,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .course-features ul li span i {
 	font-size:14px;
-	color:#6ac142;
+	color:#c22126;
 	margin-right:10px;
 }
 .course-features ul li span:first-child {
@@ -2529,8 +2534,8 @@ h1, h2, h3, h4, h5, h6 {
     letter-spacing: 2px;
 }
 .error-msg .btn-common:hover {
-	background-color:#529e2f;
-	border-color:#529e2f;
+	background-color:#c22126;
+	border-color:#c22126;
 }
 /*----------------------------------------*/
 /*  26. Coming Soon
@@ -3213,8 +3218,8 @@ a.value-decrease::before {
 	font-size: 12px;
 }
 .proceed-checkout  .btn-common:hover {
-	background-color:#529e2f;
-	border-color:#529e2f;
+	background-color:#c22126;
+	border-color:#c22126;
 	color:#ffffff;
 }
 /*----------------------------------------*/

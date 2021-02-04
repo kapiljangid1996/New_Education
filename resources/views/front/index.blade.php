@@ -40,7 +40,7 @@
 			<div class="banner-inner slider-text-style text-center">
 				<div class="banner-text">
 					<h1 style="color: white">Find Colleges Online</h1>
-					<p style="color: white">Discover over 10,000 courses from 6,500 education providers in United States</p>
+					<p style="color: white">Discover over 10,000 courses from 6,500 education providers in India</p>
 				</div>
 				<div class="mt-40">
 					<div class="form-group search-edutab">
@@ -72,7 +72,7 @@
 	</div>	
 </div>
 <div style="clear: both;"></div>
-<div class="courses-area pb-30 fix mt-60 educou" style="margin-top: 14%;">
+<div class="courses-area pb-30 fix mt-60 educourse">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-lg-12">
@@ -87,7 +87,7 @@
 			<div class="row">
 				@foreach($colleges as $key => $college)
 					<div class="col-lg-4">
-						<div class="course-single">
+						<div class="course-single"><br>
 							<div class="course-thumb">
 								<a href="{{url('/college/'.$college->slug)}}"><img src="{{asset('Uploads/College/Image/400x200/').'/'.$college->image}}" style="height: 225px;"></a>
 							</div>
@@ -140,7 +140,7 @@ $('.searchresult').keyup(function(){
 });
 
 $(document).on('click', 'li', function(){  
-    $('#livesearchcollege').val($(this).text());  
+   // $('#livesearchcollege').val($(this).text());  
     $('#searchlist	').fadeOut();  
 }); 
 

@@ -29,7 +29,7 @@
 							<th>#</th>
 							<th>Name</th>
 							<th>Email</th>
-							<th>Subject</th>
+							<th>Contact Number</th>
 							<th>Message</th>
 						</tr>
 					</thead>
@@ -43,7 +43,7 @@
 							<td><?php echo $index; ?></td>
 							<td>{{ $contact->name }}</td>
 							<td>{{ $contact->email }}</td>
-							<td>{{ $contact->subject }}</td>
+							<td>{{ $contact->contact }}</td>
 							<td>{{ $contact->message }}</td>
 						</tr>
 						<?php  } ?>
