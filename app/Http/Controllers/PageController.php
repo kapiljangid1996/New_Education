@@ -19,4 +19,15 @@ class PageController extends Controller
 		return redirect()->back()->with('success','Thank You!');
 	}
 
+	public function studentInquiry()
+	{
+		return view('front.inquiry');
+	}
+
+	public function saveStudentInquiry(Request $request)
+	{
+		$inquiry = Contact::storeInquiry($request);
+		return redirect()->back()->with('toast_success','Thank You!');
+	}
+
 }

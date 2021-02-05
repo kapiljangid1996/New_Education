@@ -23,14 +23,19 @@
 				<strong class="card-title">Contact List</strong>
 			</div>
 			<div class="card-body">
-				<table id="example-table" class="table table-borderless table-hover" cellspacing="0" width="100%">
+				<table id="example-table" class="table table-borderless table-hover table-responsive" cellspacing="0" width="100%">
 					<thead>
 						<tr>
 							<th>#</th>
 							<th>Name</th>
 							<th>Email</th>
 							<th>Contact Number</th>
-							<th>Message</th>
+							<th>City</th>
+							<th>10th Percent</th>
+							<th>12th Percent</th>
+							<th>Graduation Percent</th>
+							<th>Type</th>
+							<th>Reg Id</th>
 						</tr>
 					</thead>
 					<tbody id="myTable">
@@ -44,7 +49,12 @@
 							<td>{{ $contact->name }}</td>
 							<td>{{ $contact->email }}</td>
 							<td>{{ $contact->contact }}</td>
-							<td>{{ $contact->message }}</td>
+							<td>{{ $contact->city }}</td>
+							<td>{{ $contact->tenth_Percent }}</td>
+							<td>{{ $contact->twelfth_Percent }}</td>
+							<td>{{ $contact->graduation_Percent }}</td>
+							<td>{{ $contact->type }}</td>
+							<td>{{ $contact->reg_id }}</td>
 						</tr>
 						<?php  } ?>
 					</tbody>

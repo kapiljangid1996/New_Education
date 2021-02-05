@@ -13,14 +13,20 @@ class Filter extends Model
 {
 	use HasFactory;
 
-	public static function filterCollege($request){
-        if (!empty($request->all())) {
-            if (isset($request->page)) {
+	public static function filterCollege($request, $slug){
+        $search_data = array();
+        parse_str($slug, $search_data);
+        /*echo "<pre>";
+        print_r($search_data);
+        die();*/
+
+        if (!empty($search_data)) {
+            if (isset($search_data['page'])) {
                 if($request->session()->has('form_data')){
-                   $request->session()->put('form_data.page',$request->page);
+                   $request->session()->put('form_data.page',$search_data['page']);
                 } 
             }else{
-                 $request->session()->put('form_data', $request->all());
+                $request->session()->put('form_data', $search_data);
             }           
         }
 

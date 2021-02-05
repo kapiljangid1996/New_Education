@@ -46,9 +46,9 @@ class HomeController extends Controller
         return view('front.courseDetail')->with('courses',$courses);
     }
 
-    public function collegeView(Request $request)
-    {        
-        $colleges= Filter::filterCollege($request);
+    public function collegeView(Request $request, $slug)
+    {           
+        $colleges= Filter::filterCollege($request, $slug);
         $cities = College::with('city_name')->where('status','=',1)->select('city', DB::raw('count(*) as total'))->groupBy('city')->orderBy('total', 'desc')->get();
         return view('front.collegeView')->with('colleges',$colleges)->with('cities',$cities);
     }

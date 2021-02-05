@@ -341,13 +341,13 @@
 		function college_filter() {
 			var form_data = $( "#collegefilterform :input" ).serialize();
 
-			window.location.href = baseUrl +'/colleges?'+ form_data;
+			window.location.href = baseUrl +'/colleges/'+ form_data;
 		}
 
     	function course_filter() {
 	    	var course_form_data = $( "#coursefilterform :input" ).serialize();
 
-			window.location.href = baseUrl +'/courses?'+ course_form_data;
+			window.location.href = baseUrl +'/courses/'+ course_form_data;
     	}
 	</script>
 	<!-------------------------------------------------------- College Filter Ajax Request End -------------------------------------------------------------- --> 

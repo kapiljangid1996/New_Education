@@ -74,7 +74,7 @@
 
 							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Private" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Private',$_GET['ownership'])) ? 'checked=checked' : '' ;?> ><label class="labelOwnership"> Private </label><br>
 
-							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Public / Government" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Public / Government',$_GET['ownership'])) ? 'checked=checked' : '' ;?>><label class="labelOwnership"> Public / Government </label><br>
+							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Public Government" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Public Government',$_GET['ownership'])) ? 'checked=checked' : '' ;?>><label class="labelOwnership"> Public / Government </label><br>
 
 							<input type="checkbox"  class="filter_colleges ownership" name="ownership[]" value="Public Private" <?php echo (isset($_GET['ownership']) && !empty($_GET['ownership']) && in_array('Public Private',$_GET['ownership'])) ? 'checked=checked' : '' ;?>><label class="labelOwnership"> Public Private </label>
 
@@ -110,7 +110,7 @@
 							</div>
 						</div> -->
 						<div class="tags-list mt-35 clear-filter" @if(session()->has('form_data')) style="display:block" @else style="display:none" @endif >
-							<a> Clear <button class="tags-style"><i class="fa fa-times"></i></button></a>
+							<a href="http://localhost/New_Education/colleges/all"> Clear </a>
 						</div>
 					</form>
 				</div>
@@ -193,6 +193,10 @@
 
 <script>
 $("document").ready(function () {
+	var baseUrl = '{{ URL::to('/') }}';	
+	var url = baseUrl + '/colleges/all';			
+	var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
+
     $("#searchText").on("keyup", function (e) {
         var input  = $(this).val();        
         $("#ulVal input[type=checkbox]").each(function (index, element) {
@@ -205,10 +209,13 @@ $("document").ready(function () {
         });
     });
 
-    function uncheckAll() {
-  		$("input[type='checkbox']:checked").prop("checked", false)
+    /*function uncheckAll() {
+  		$("input[type='checkbox']:checked").prop("checked", false); 
+  		window.location.href = url;
 	}
-	$(':button').on('click', uncheckAll)
+	$('.tags-style').on('click', function(){
+		window.location.href = "http://google.com";
+	})*/
 });
 </script>
 
