@@ -166,7 +166,7 @@ class College extends Model
     {
         $request->validate([
             'name'  => 'required|min:3|max:255|string',
-            'slug'  => 'required',
+            'slug'  => 'required|unique:colleges,slug,'.$id,
             'ownership' => 'required|sometimes|nullable',
             'state'  => 'required|sometimes|nullable',
             'city'  => 'required|sometimes|nullable',

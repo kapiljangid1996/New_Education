@@ -55,6 +55,11 @@ class SearchController extends Controller
                 }           
                 $output .= '</ul>';
             }
+            else{
+                $output = '<ul class="dropdown-menu edutab" style="display:block;">';
+                $output .= '<li><a class="search-list" href="javascript:void(0)">NO Records Found</a></li>';
+                $output .= '</ul>';
+            }
             echo $output;
         }
     }

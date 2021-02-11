@@ -70,6 +70,13 @@
 							<input type="text" name="graduation_Percent" placeholder="Graduation Percentage" value="{{old('graduation_Percent')}}" required />
 							{!! $errors->first('graduation_Percent', '<small class="text-danger">:message</small>') !!}
 						</div>
+						<div class="col-sm-12 mt-30">
+							<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+							<?php 
+								$google_captcha_site_key = "6LdDQVMaAAAAACIiLvivR92QtZxDx1GFpxliON7m"; // previewsourceart key
+							?>
+							<div class="g-recaptcha" data-sitekey="<?php echo $google_captcha_site_key; ?>"></div>
+						</div>
 						<input type="hidden" name="type" value="contact" />
 						<div class="col-sm-12 mt-40">
 							<button class="btn-common d-inline-block">Send message</button>

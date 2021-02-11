@@ -24,6 +24,7 @@ Route::post('/contact-us', [App\Http\Controllers\PageController::class, 'saveCon
 Route::get('/registration-form', [App\Http\Controllers\PageController::class, 'studentInquiry']);
 Route::post('/registration-form', [App\Http\Controllers\PageController::class, 'saveStudentInquiry'])->name('student.inquiry.submit');
 Route::post('newsletter', [App\Http\Controllers\HomeController::class, 'newsLetter'])->name('newsletter.store');
+Route::get('/contact/export/{type}', [App\Http\Controllers\PageController::class, 'exportContact'])->name('contact.export');
 
 //-----------------------------Searching--------------------------
 

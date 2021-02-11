@@ -21,6 +21,15 @@
 		<div class="card shadow">
 			<div class="card-header">
 				<strong class="card-title">Contact List</strong>
+				<div class="btn-group" style="float: right;">
+					<button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    					Export
+  					</button>
+  					<div class="dropdown-menu">
+  						<a class="dropdown-item" href="{{url('/contact/export/xlsx')}}">Excel</a>
+						<a class="dropdown-item" href="{{url('/contact/export/xls')}}">Csv</a>
+  					</div>
+				</div>
 			</div>
 			<div class="card-body">
 				<table id="example-table" class="table table-borderless table-hover table-responsive" cellspacing="0" width="100%">
